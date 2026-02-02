@@ -20,11 +20,18 @@
 
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
-body{background:var(--bg);color:var(--text);position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
 
 /* HEADER */
 header{text-align:center;padding:60px 20px 30px;}
-header .logo-header{
+.logo-header{
   display:flex;
   align-items:center;
   justify-content:center;
@@ -33,130 +40,119 @@ header .logo-header{
   font-weight:700;
   animation:float 2.5s infinite ease-in-out;
 }
-header .logo-header img{
-  width:80px;
-  height:80px;
-  object-fit:contain;
-}
-header .logo-header .frostnodes{
+.logo-header img{width:80px;height:80px;}
+.frostnodes{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-header .logo-header .ai{
-  color:#fff;
-}
-header .tagline{
-  font-size:18px;
-  color:var(--text-muted);
-  margin-top:10px;
-}
+.ai{color:#fff;}
+.tagline{margin-top:10px;color:var(--text-muted);font-size:18px;}
 
-/* FLOATING ANIMATION */
 @keyframes float{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-12px);}
 }
 
-/* CHAT CONTAINER */
+/* CHAT */
 .chat-container{
-  max-width:700px;
-  margin:30px auto 80px;
+  max-width:720px;
+  width:90%;
   background:var(--card);
   border-radius:12px;
   padding:20px;
-  box-shadow:0 0 20px rgba(92,200,255,0.3);
-  flex-grow:1;
-  width:90%;
   border:2px solid #5cc8ff;
+  box-shadow:0 0 20px rgba(92,200,255,.3);
+  margin-bottom:90px;
 }
 
-/* CHAT BOX */
 .chat-box{
   height:400px;
   overflow-y:auto;
   padding:10px;
+  background:var(--nav);
   border:2px solid #00ffff;
   border-radius:8px;
   margin-bottom:15px;
-  background:var(--nav);
 }
 
-/* MESSAGES */
 .chat-message{margin:8px 0;display:flex;}
 .chat-message.user{justify-content:flex-end;}
 .chat-message.bot{justify-content:flex-start;}
+
 .message{
   padding:10px 14px;
   border-radius:12px;
-  max-width:70%;
-  word-wrap:break-word;
+  max-width:75%;
 }
-.chat-message.user .message{background:var(--accent);color:#000;border-radius:12px 12px 0 12px;}
-.chat-message.bot .message{background:var(--card);color:#fff;border-radius:12px 12px 12px 0;display:flex;align-items:center;gap:6px;}
 
-/* LOADING SPIN */
+.user .message{
+  background:var(--accent);
+  color:#000;
+  border-radius:12px 12px 0 12px;
+}
+
+.bot .message{
+  background:var(--card);
+  color:#fff;
+  border-radius:12px 12px 12px 0;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+/* LOADING */
 .loading-symbol{
-  display:inline-block;
+  width:16px;
+  height:16px;
   border:3px solid #5cc8ff;
   border-top:3px solid #00ffff;
   border-radius:50%;
-  width:16px;
-  height:16px;
   animation:spin 1s linear infinite;
-  margin-right:6px;
 }
-@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@keyframes spin{
+  0%{transform:rotate(0);}
+  100%{transform:rotate(360deg);}
+}
 
-/* INPUT AND BUTTON */
+/* INPUT */
 .input-container{display:flex;gap:10px;}
-input[type="text"]{
+input{
   flex:1;
   padding:12px;
   border-radius:8px;
-  border:1px solid #1c2a52;
+  border:1px solid var(--border);
   background:var(--nav);
   color:#fff;
 }
-input::placeholder{color:#777;}
-button.send-btn{
+button{
   padding:12px 20px;
+  font-size:20px;
   border:none;
   border-radius:8px;
   background:var(--accent-gradient);
-  color:#000;
-  font-weight:600;
-  font-size:20px;
   cursor:pointer;
-  transition:.3s;
-}
-button.send-btn:hover{
-  box-shadow:0 0 18px rgba(92,200,255,.4);
-  transform:scale(1.05);
+  font-weight:600;
 }
 
-/* GO BACK BUTTON */
+/* GO BACK */
 .go-back{
   position:fixed;
-  right:20px;
   bottom:20px;
+  right:20px;
   padding:14px 24px;
-  background:linear-gradient(135deg,#5cc8ff,#00ffff);
+  background:var(--accent-gradient);
   color:#000;
-  font-weight:600;
-  border:none;
   border-radius:10px;
-  cursor:pointer;
-  transition:.3s;
+  font-weight:600;
   text-decoration:none;
 }
-.go-back:hover{box-shadow:0 0 20px rgba(92,200,255,0.5);transform:scale(1.05);}
 
 /* FOOTER */
-footer{text-align:center;padding:20px;color:#777;}
-@media(max-width:600px){.chat-box{height:300px;}header .logo-header{font-size:36px;}header .tagline{font-size:16px;}}
+footer{color:#777;padding:20px;}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -165,14 +161,17 @@ footer{text-align:center;padding:20px;color:#777;}
     <div class="frostnodes">FrostNodes</div>
     <div class="ai">AI</div>
   </div>
-  <div class="tagline">Your hosting assistant — VPS, Minecraft, Bot & Domain help. Powered by ChatGPT.</div>
+  <div class="tagline">
+    Your friendly hosting assistant — VPS, Minecraft, Bot & Domain help. Powered by ChatGPT.
+  </div>
 </header>
 
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input type="text" id="userInput" placeholder="Ask me about hosting, VPS, Minecraft servers..." onkeydown="if(event.key==='Enter'){sendMessage()}">
-    <button class="send-btn" onclick="sendMessage()">➣</button>
+    <input id="userInput" placeholder="Type anything… I’ll understand 😊"
+      onkeydown="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">➣</button>
   </div>
 </div>
 
@@ -181,71 +180,85 @@ footer{text-align:center;padding:20px;color:#777;}
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-// Normalize input and autocorrect shortforms and typos
-function normalizeInput(input){
-  let msg = input.toLowerCase();
-  msg = msg.replace(/\bpls\b/g,"please").replace(/\bthx\b/g,"thanks").replace(/\bty\b/g,"thanks");
-  msg = msg.replace(/\b(u|ur)\b/g,"you");
-  msg = msg.replace(/\bhow r you\b/g,"how are you");
-  msg = msg.replace(/vpss?/g,"vps");
-  msg = msg.replace(/minecrft|minecra/g,"minecraft");
-  msg = msg.replace(/domian/g,"domain");
-  msg = msg.replace(/[^\w\s]/g,""); // remove punctuation
-  return msg.trim();
+// NORMALIZE & AUTOCORRECT
+function normalizeInput(text){
+  let msg = text.toLowerCase();
+
+  const map = {
+    "hlo":"hello","helo":"hello","hii":"hi","sup":"hello",
+    "hw r u":"how are you","how r u":"how are you","how ru":"how are you",
+    "pls":"please","plz":"please","thx":"thanks","ty":"thanks",
+    "u":"you","ur":"your","bro":"friend",
+    "minecrft":"minecraft","mc":"minecraft",
+    "domian":"domain","doman":"domain",
+    "vpss":"vps","botts":"bot"
+  };
+
+  Object.keys(map).forEach(k=>{
+    msg = msg.replace(new RegExp("\\b"+k+"\\b","g"), map[k]);
+  });
+
+  return msg.replace(/[^\w\s]/g,"").trim();
 }
 
-// Main bot logic
-function getBotReply(message){
-  const msg = normalizeInput(message);
+// AI BRAIN
+function getBotReply(input){
+  const msg = normalizeInput(input);
 
-  // Greetings
-  if(msg.match(/\b(hello|hi|hey|sup|how are you)\b/)) return "Hello! 👋 I'm your FrostNodes AI assistant. How can I help you with VPS, Minecraft, Bot, or Domain hosting today?";
+  // greetings
+  if(msg.includes("hello") || msg.includes("hi") || msg.includes("how are you")){
+    return "Hey! 😊 I’m Frost AI from FrostNodes. I’m doing great—thanks for asking! How can I help you today?";
+  }
 
-  // Thanks & polite
-  if(msg.match(/\b(thanks|thank you|you are awesome|ty)\b/)) return "You're welcome! 😄 Glad I could help. Do you need assistance with VPS, Minecraft, Bot, or Domain hosting?";
-  if(msg.includes("please")) return "Sure! 😄 What do you need help with?";
+  // polite
+  if(msg.includes("thanks")) return "You’re very welcome! 😄 Always happy to help.";
+  if(msg.includes("please")) return "Of course! 😊 Tell me what you’d like to know.";
 
-  // Fixed info answers
-  if(msg.includes("what is frostnodes")) return "FrostNodes is a high-performance IT & hosting company providing VPS, Minecraft servers, Bot Hosting, and Domain services. We focus on speed, reliability, and security for gamers and businesses.";
-  if(msg.includes("who is your creator")) return "I was created by Dynamind, the founder of FrostNodes.";
-  if(msg.includes("powered by")) return "I am powered by ChatGPT.";
+  // identity
+  if(msg.includes("what is frostnodes"))
+    return "FrostNodes is an Indian hosting company offering budget-friendly yet powerful VPS, Minecraft servers, Bot Hosting, and Domains with great performance and support.";
 
-  // Hosting explanations
-  if(msg.includes("vps")) return "A VPS (Virtual Private Server) is a virtual server that gives you dedicated resources on a shared physical server. You can host websites, Minecraft servers, bots, or applications with full control, isolation, and consistent performance.";
-  if(msg.includes("minecraft")) return "Minecraft server hosting lets you run multiplayer worlds online. FrostNodes provides low-latency servers, instant setup, DDoS protection, and support for mods/plugins.";
-  if(msg.includes("bot")) return "Bot hosting allows you to run Discord, Telegram, or other bots 24/7 without relying on your PC. FrostNodes ensures uptime, performance, and scalability.";
-  if(msg.includes("domain")) return "Domain hosting involves registering and managing domain names for websites or servers. FrostNodes domains are fast, secure, and easy to manage.";
+  if(msg.includes("creator")) return "I was created by Dynamind, one of the owners of FrostNodes.";
+  if(msg.includes("powered by")) return "I’m proudly powered by ChatGPT 🤖.";
 
-  // Fallback
-  return "I can answer questions about FrostNodes and hosting services. Ask me about VPS, Minecraft servers, Bot Hosting, or Domains.";
+  // hosting knowledge
+  if(msg.includes("vps"))
+    return "A VPS (Virtual Private Server) gives you dedicated resources on a shared machine. It’s perfect for hosting websites, Minecraft servers, bots, and apps with full control.";
+
+  if(msg.includes("minecraft"))
+    return "Minecraft hosting lets you run multiplayer servers online. FrostNodes offers low latency, DDoS protection, mod/plugin support, and smooth gameplay.";
+
+  if(msg.includes("bot"))
+    return "Bot hosting allows Discord or Telegram bots to run 24/7 without your PC. FrostNodes keeps them fast, stable, and always online.";
+
+  if(msg.includes("domain"))
+    return "A domain is your online address (like example.com). FrostNodes domains are easy to manage, secure, and reliable.";
+
+  // fallback
+  return "Hmm 🤔 I might not fully understand that yet. I’m best with VPS, Minecraft, Bot Hosting, Domains, or FrostNodes-related questions. Try asking about those!";
 }
 
-// Send message
+// SEND MESSAGE
 function sendMessage(){
-  const input = document.getElementById('userInput');
-  const chatBox = document.getElementById('chatBox');
-  const userText = input.value.trim();
-  if(!userText) return;
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chatBox");
+  const text = input.value.trim();
+  if(!text) return;
 
-  // User message
-  const userMsg = document.createElement('div');
-  userMsg.classList.add('chat-message','user');
-  userMsg.innerHTML = `<div class="message">${userText}</div>`;
-  chatBox.appendChild(userMsg);
-  input.value='';
-  chatBox.scrollTop=chatBox.scrollHeight;
+  chat.innerHTML += `<div class="chat-message user"><div class="message">${text}</div></div>`;
+  input.value="";
+  chat.scrollTop = chat.scrollHeight;
 
-  // Bot typing animation
-  const botMsg = document.createElement('div');
-  botMsg.classList.add('chat-message','bot');
-  botMsg.innerHTML = `<div class="message"><span class="loading-symbol"></span> Thinking...</div>`;
-  chatBox.appendChild(botMsg);
-  chatBox.scrollTop=chatBox.scrollHeight;
+  const botDiv = document.createElement("div");
+  botDiv.className = "chat-message bot";
+  botDiv.innerHTML = `<div class="message"><span class="loading-symbol"></span> Thinking…</div>`;
+  chat.appendChild(botDiv);
+  chat.scrollTop = chat.scrollHeight;
 
   setTimeout(()=>{
-    botMsg.innerHTML = `<div class="message">${getBotReply(userText)}</div>`;
-    chatBox.scrollTop=chatBox.scrollHeight;
-  },1200);
+    botDiv.innerHTML = `<div class="message">${getBotReply(text)}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  },1000);
 }
 </script>
 
