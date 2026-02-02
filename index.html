@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>FrostNodes | IT Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>FrostNodes | IT Solutions</title>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -81,7 +82,7 @@ nav a:hover{color:#5cc8ff}
   background:radial-gradient(circle at top,#13203d,#0b0f1a)
 }
 
-/* AMD BOUNCING BOX */
+/* AMD BOX */
 .amd-box{
   display:inline-block;
   margin-bottom:30px;
@@ -113,13 +114,11 @@ section h2{
   font-size:34px;
   margin-bottom:55px
 }
-
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:30px
 }
-
 .feature{
   background:#121a30;
   border:1px solid #1c2a52;
@@ -128,16 +127,8 @@ section h2{
   transition:.4s;
   cursor:pointer
 }
-.feature h3{
-  margin-bottom:10px;
-  color:#5cc8ff
-}
-.feature p{
-  color:#bbb;
-  font-size:14px
-}
-
-/* HOVER ANIMATION */
+.feature h3{margin-bottom:10px;color:#5cc8ff}
+.feature p{color:#bbb;font-size:14px}
 .feature:hover{
   transform:translateY(-12px) scale(1.03);
   box-shadow:0 25px 50px rgba(92,200,255,.18);
@@ -168,73 +159,45 @@ footer{
   <div class="logo">❄ FrostNodes</div>
 
   <div class="menu">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
 
     <div class="dropdown">
       <a href="#">Services ▾</a>
       <div class="dropdown-content">
-        <a href="minecraft.html">Minecraft Hosting</a>
-        <a href="vps.html">VPS Hosting</a>
-        <a href="bot.html">Bot Hosting</a>
-        <a href="domains.html">Domain Plans</a>
+        <a href="/minecraft">Minecraft Hosting</a>
+        <a href="/vps">VPS Hosting</a>
+        <a href="/bot">Bot Hosting</a>
+        <a href="/domains">Domain Plans</a>
       </div>
     </div>
 
-    <a href="free.html">Free Plan</a>
-    <a href="about.html">About Us</a>
-    <a href="frost-ai.html">Frost AI</a>
+    <a href="/free">Free Plan</a>
+    <a href="/about">About Us</a>
+    <a href="/frost-ai">Frost AI</a>
   </div>
 
   <div>
-    <a href="account.html">Account</a>
-    <a href="login.html" class="btn">Login with Discord</a>
+    <a href="/account">Account</a>
+    <a href="/login" class="btn">Login with Discord</a>
   </div>
 </nav>
 
 <div class="hero">
-
-  <div class="amd-box">
-    🚀 Powered by AMD Ryzen™ 9 7950X
-  </div>
-
+  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
   <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
-
 </div>
 
 <section>
   <h2>Why Choose FrostNodes?</h2>
 
   <div class="features">
-    <div class="feature">
-      <h3>DDoS Protection</h3>
-      <p>Enterprise-grade protection for your servers</p>
-    </div>
-
-    <div class="feature">
-      <h3>NVMe SSD Storage</h3>
-      <p>Lightning-fast performance with NVMe drives</p>
-    </div>
-
-    <div class="feature">
-      <h3>Instant Setup</h3>
-      <p>Get your server running in minutes</p>
-    </div>
-
-    <div class="feature">
-      <h3>India Location</h3>
-      <p>Low latency for Indian players</p>
-    </div>
-
-    <div class="feature">
-      <h3>24/7 Support</h3>
-      <p>Always here to help you succeed</p>
-    </div>
-
-    <div class="feature">
-      <h3>99.9% Uptime</h3>
-      <p>Reliable infrastructure you can trust</p>
-    </div>
+    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade protection for your servers</p></div>
+    <div class="feature"><h3>NVMe SSD Storage</h3><p>Lightning-fast performance with NVMe drives</p></div>
+    <div class="feature"><h3>Instant Setup</h3><p>Get your server running in minutes</p></div>
+    <div class="feature"><h3>India Location</h3><p>Low latency for Indian players</p></div>
+    <div class="feature"><h3>24/7 Support</h3><p>Always here to help you succeed</p></div>
+    <div class="feature"><h3>99.9% Uptime</h3><p>Reliable infrastructure you can trust</p></div>
   </div>
 </section>
 
