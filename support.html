@@ -29,7 +29,7 @@ body{
   color:#fff;
 }
 
-/* NAVBAR */
+/* ===== NAVBAR (SAME AS HOMEPAGE) ===== */
 nav{
   display:flex;
   justify-content:space-between;
@@ -41,24 +41,17 @@ nav{
   z-index:1000;
 }
 
-nav a{
-  color:#cfcfcf;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:500;
-  transition:.25s;
-}
-nav a:hover{color:var(--accent)}
-
 .logo{
   display:flex;
   align-items:center;
   gap:12px;
 }
+
 .logo img{
   width:34px;
   height:34px;
 }
+
 .logo span{
   font-size:22px;
   font-weight:700;
@@ -72,6 +65,55 @@ nav a:hover{color:var(--accent)}
   align-items:center;
 }
 
+nav a{
+  color:#cfcfcf;
+  text-decoration:none;
+  margin:0 14px;
+  font-weight:500;
+  transition:.25s;
+}
+nav a:hover{color:var(--accent);}
+
+/* DROPDOWN */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-content{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:var(--card);
+  min-width:220px;
+  border-radius:10px;
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.25s;
+}
+
+.dropdown-content a{
+  display:block;
+  padding:14px 18px;
+  border-bottom:1px solid var(--border);
+}
+
+.dropdown-content a:last-child{
+  border-bottom:none;
+}
+
+.dropdown-content a:hover{
+  background:var(--border);
+  padding-left:24px;
+}
+
+.dropdown:hover .dropdown-content{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
 /* DISCORD BUTTON */
 .discord-box{
   padding:8px 16px;
@@ -82,58 +124,62 @@ nav a:hover{color:var(--accent)}
   text-decoration:none;
   transition:.25s;
 }
+
 .discord-box:hover{
   background:var(--accent);
   color:#000;
 }
 
-/* SUPPORT HERO */
-.support-hero{
+/* ===== SUPPORT PAGE CONTENT ===== */
+.support{
+  min-height:80vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:100px 8%;
-  background:radial-gradient(circle at top,#13203d,#0b0f1a);
+  padding:80px 8%;
 }
 
-.support-hero h1{
-  font-size:48px;
+.support h1{
+  font-size:42px;
   margin-bottom:14px;
 }
-.support-hero span{
+
+.support h1 span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.support-hero p{
-  color:#bbb;
+.support p{
+  color:#aaa;
   max-width:620px;
-  margin:0 auto 50px;
+  margin-bottom:50px;
 }
 
-/* FLOATING BUTTON */
-.ticket-button{
-  display:inline-block;
-  padding:18px 40px;
-  font-size:18px;
+/* FLOATING SUPPORT BUTTON */
+.ticket-btn{
+  padding:18px 44px;
+  font-size:16px;
   font-weight:700;
-  color:#fff;
   border-radius:16px;
-  border:2px solid transparent;
   background:
     linear-gradient(var(--bg),var(--bg)) padding-box,
     var(--accent-gradient) border-box;
+  border:2px solid transparent;
+  color:#fff;
   text-decoration:none;
+  transition:.35s;
+  box-shadow:0 0 30px rgba(92,200,255,.45);
   animation:float 2.5s ease-in-out infinite;
-  box-shadow:0 0 25px rgba(92,200,255,.35);
-  transition:.3s;
 }
 
-.ticket-button:hover{
+.ticket-btn:hover{
   transform:scale(1.08);
-  box-shadow:0 0 45px rgba(92,200,255,.6);
+  box-shadow:0 0 45px rgba(92,200,255,.75);
 }
 
-/* FLOAT ANIMATION */
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-16px)}
@@ -148,9 +194,8 @@ footer{
 }
 
 /* RESPONSIVE */
-@media(max-width:600px){
-  .support-hero h1{font-size:36px;}
-  .ticket-button{padding:16px 30px;font-size:16px;}
+@media(max-width:700px){
+  .support h1{font-size:34px;}
 }
 </style>
 </head>
@@ -179,7 +224,7 @@ footer{
 
     <a href="/free">Free Plan</a>
     <a href="/about">About Us</a>
-    <a href="/frost-ai">Frost AI</a>
+    <a href="/ai">Frost AI</a>
     <a href="/support">Support</a>
   </div>
 
@@ -188,20 +233,18 @@ footer{
   </a>
 </nav>
 
-<!-- SUPPORT SECTION -->
-<section class="support-hero">
-  <h1>Need <span>Help?</span></h1>
-  <p>
-    Our support team is available 24/7.  
-    Open a ticket and get fast, professional assistance from FrostNodes staff.
-  </p>
+<!-- SUPPORT CONTENT -->
+<div class="support">
+  <h1>Get <span>Support</span></h1>
+  <p>Need help? Our support team is available 24/7.  
+     Open a ticket and we’ll assist you as fast as possible.</p>
 
-  <a class="ticket-button"
+  <a class="ticket-btn"
      href="https://discord.com/channels/1293569663694930011/1465184059259883540"
      target="_blank">
-    🎫 Get Support via Tickets
+     🎫 Get Support Via Tickets
   </a>
-</section>
+</div>
 
 <footer>
   © 2026 FrostNodes. All rights reserved.
