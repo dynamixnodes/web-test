@@ -25,15 +25,26 @@ body{background:var(--bg);color:var(--text);position:relative;min-height:100vh;d
 /* HEADER */
 header{text-align:center;padding:60px 20px 30px;}
 header .logo-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
   font-size:48px;
   font-weight:700;
-  color:#fff;
   animation:float 2.5s infinite ease-in-out;
 }
-header .logo-header span{
+header .logo-header img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+}
+header .logo-header .frostnodes{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+}
+header .logo-header .ai{
+  color:#fff;
 }
 header .tagline{
   font-size:18px;
@@ -85,8 +96,17 @@ header .tagline{
 .chat-message.bot .message{background:var(--card);color:#fff;border-radius:12px 12px 12px 0;display:flex;align-items:center;gap:6px;}
 
 /* LOADING SPIN */
+.loading-symbol{
+  display:inline-block;
+  border:3px solid #5cc8ff;
+  border-top:3px solid #00ffff;
+  border-radius:50%;
+  width:16px;
+  height:16px;
+  animation:spin 1s linear infinite;
+  margin-right:6px;
+}
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-.loading-symbol{display:inline-block;animation:spin 1s linear infinite;}
 
 /* INPUT AND BUTTON */
 .input-container{display:flex;gap:10px;}
@@ -140,47 +160,62 @@ footer{text-align:center;padding:20px;color:#777;}
 <body>
 
 <header>
-  <div class="logo-header">FrostNodes <span>AI</span></div>
-  <div class="tagline">Your hosting assistant — VPS, Minecraft, Bot & Domain help, powered by ChatGPT.</div>
+  <div class="logo-header">
+    <img src="logo.png" alt="FrostNodes Logo">
+    <div class="frostnodes">FrostNodes</div>
+    <div class="ai">AI</div>
+  </div>
+  <div class="tagline">Your hosting assistant — VPS, Minecraft, Bot & Domain help. Powered by ChatGPT.</div>
 </header>
 
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input type="text" id="userInput" placeholder="Ask me about hosting, VPS, Minecraft servers...">
+    <input type="text" id="userInput" placeholder="Ask me about hosting, VPS, Minecraft servers..." onkeydown="if(event.key==='Enter'){sendMessage()}">
     <button class="send-btn" onclick="sendMessage()">➣</button>
   </div>
 </div>
 
-<a href="/" class="go-back">Go Back</a>
+<a href="/" class="go-back">← Go Back</a>
 
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-function getBotReply(message){
-  const msg = message.toLowerCase().trim();
+// Basic autocorrect and normalization
+function normalizeInput(input){
+  let msg = input.toLowerCase();
+  msg = msg.replace(/pls/g,"please").replace(/thx/g,"thanks");
+  msg = msg.replace(/vpss?/g,"vps");
+  msg = msg.replace(/minecrft|minecra/g,"minecraft");
+  msg = msg.replace(/domian/g,"domain");
+  msg = msg.replace(/[^\w\s]/g,""); // remove punctuation
+  return msg.trim();
+}
 
-  // Greetings
-  if(msg.match(/\b(hello|hi|hey)\b/)) return "Hello! 👋 How can I assist you with hosting today?";
-  if(msg.match(/\b(thank you|thanks)\b/)) return "You're welcome! 😊 Need help with VPS, Minecraft, Bots, or Domains?";
-  if(msg.includes("please") || msg.includes("pls")) return "Sure! 😄 How can I help?";
+function getBotReply(message){
+  const msg = normalizeInput(message);
+
+  // Friendly gestures
+  if(msg.match(/\b(hello|hi|hey|good morning|good afternoon|good evening)\b/)) return "Hello! 👋 How can I help you with hosting today?";
+  if(msg.match(/\b(thank you|thanks)\b/)) return "You're welcome! 😊 Do you need assistance with VPS, Minecraft, Bot, or Domain hosting?";
+  if(msg.includes("please")) return "Sure! 😄 What do you need help with?";
 
   // Custom fixed answers
-  if(msg.includes("what is frostnodes")) return "FrostNodes is a next-gen IT & hosting company offering VPS, Minecraft servers, Bot Hosting, and Domain services. We provide high-performance, secure, and reliable hosting solutions.";
-  if(msg.includes("who is your creator")) return "My creator is Dynamind.";
+  if(msg.includes("what is frostnodes")) return "FrostNodes is a high-performance IT & hosting company providing VPS, Minecraft servers, Bot Hosting, and Domain services. We focus on speed, reliability, and security for gamers and businesses.";
+  if(msg.includes("who is your creator")) return "I was created by Dynamind, the founder of FrostNodes.";
   if(msg.includes("powered by")) return "I am powered by ChatGPT.";
 
   // Hosting explanations
-  if(msg.includes("vps")) return "A VPS (Virtual Private Server) is a virtualized server giving you dedicated resources on a shared physical server. You can host websites, Minecraft servers, bots, or applications with control, performance, and isolation.";
-  if(msg.includes("minecraft")) return "Minecraft server hosting allows you to run multiplayer Minecraft worlds online. FrostNodes provides low-latency servers, instant setup, DDoS protection, and support for mods and plugins.";
-  if(msg.includes("bot")) return "Bot hosting lets you run Discord, Telegram, or other bots 24/7. Our servers ensure uptime, reliability, and easy scaling.";
-  if(msg.includes("domain")) return "Domain hosting is registering and managing domain names for websites or servers. FrostNodes domains are fast, secure, and easy to manage.";
+  if(msg.includes("vps")) return "A VPS (Virtual Private Server) is a virtualized server giving you dedicated resources on a shared physical server. It lets you host websites, Minecraft servers, bots, or applications with full control, isolation, and consistent performance.";
+  if(msg.includes("minecraft")) return "Minecraft server hosting lets you run multiplayer worlds online. FrostNodes provides low-latency servers, instant setup, DDoS protection, and support for mods/plugins.";
+  if(msg.includes("bot")) return "Bot hosting allows you to run Discord, Telegram, or other bots 24/7 without relying on your PC. FrostNodes ensures uptime, performance, and scalability.";
+  if(msg.includes("domain")) return "Domain hosting involves registering and managing domain names for websites or servers. FrostNodes domains are fast, secure, and easy to manage.";
 
   // Default fallback
   return "I can answer questions about FrostNodes and hosting services. Ask me about VPS, Minecraft servers, Bot Hosting, or Domains.";
 }
 
-async function sendMessage(){
+function sendMessage(){
   const input = document.getElementById('userInput');
   const chatBox = document.getElementById('chatBox');
   const userText = input.value.trim();
@@ -197,11 +232,10 @@ async function sendMessage(){
   // Bot typing animation
   const botMsg = document.createElement('div');
   botMsg.classList.add('chat-message','bot');
-  botMsg.innerHTML = `<div class="message"><span class="loading-symbol">⟳</span> Thinking...</div>`;
+  botMsg.innerHTML = `<div class="message"><span class="loading-symbol"></span> Thinking...</div>`;
   chatBox.appendChild(botMsg);
   chatBox.scrollTop=chatBox.scrollHeight;
 
-  // Simulate AI delay
   setTimeout(()=>{
     botMsg.innerHTML = `<div class="message">${getBotReply(userText)}</div>`;
     chatBox.scrollTop=chatBox.scrollHeight;
