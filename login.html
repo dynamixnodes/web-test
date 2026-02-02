@@ -3,12 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
 <title>FrostNodes | Login</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box} /* system default font */
-body{background:#0b0f1a;color:#fff;display:flex;flex-direction:column;min-height:100vh}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
+  background:#0b0f1a;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
 
 /* NAVBAR */
 nav{
@@ -18,12 +31,21 @@ nav{
   padding:16px 8%;
   background:#0f1629;
 }
-nav a{color:#ccc;text-decoration:none;margin:0 14px;font-weight:500;transition:.3s}
+nav a{
+  color:#ccc;
+  text-decoration:none;
+  margin:0 14px;
+  font-weight:500;
+}
 nav a:hover{color:#5cc8ff}
-.logo{font-size:22px;font-weight:700;color:#5cc8ff}
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#5cc8ff;
+}
 .menu{display:flex;align-items:center}
 
-/* LOGIN CONTAINER */
+/* LOGIN */
 .login-container{
   flex:1;
   display:flex;
@@ -33,26 +55,27 @@ nav a:hover{color:#5cc8ff}
   text-align:center;
   padding:60px 20px;
 }
-.login-container h1{font-size:42px;margin-bottom:20px}
-.login-container p{color:#aaa;margin-bottom:40px;font-size:16px}
+.login-container h1{
+  font-size:40px;
+  margin-bottom:20px;
+}
+.login-container p{
+  color:#aaa;
+  margin-bottom:40px;
+  font-size:16px;
+}
 
-/* LOGIN BUTTON */
+/* BUTTON */
 .btn{
   background:#5cc8ff;
   color:#000;
-  padding:14px 28px;
+  padding:14px 30px;
   border-radius:8px;
   font-weight:600;
   font-size:18px;
   text-decoration:none;
-  transition:.3s;
-  display:flex;
-  align-items:center;
-  gap:10px;
 }
-.btn img{width:24px;height:24px}
 .btn:hover{
-  transform:scale(1.05);
   box-shadow:0 12px 25px rgba(92,200,255,.3);
 }
 
@@ -81,9 +104,11 @@ footer{
 
 <div class="login-container">
   <h1>Login with Discord</h1>
-  <p>Access your FrostNodes account securely using your Discord account.</p>
-  <a href="https://discord.com/api/oauth2/authorize?client_id=1467861837465780346&redirect_uri=https%3A%2F%2Fdynamixnodes.qzz.io%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify%20email" class="btn">
-    <img src="/discord-logo.svg" alt="Discord Logo"> Login with Discord
+  <p>Securely access your FrostNodes account using Discord.</p>
+
+  <a href="https://discord.com/api/oauth2/authorize?client_id=1467861837465780346&redirect_uri=https%3A%2F%2Fdynamixnodes.qzz.io%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify%20email"
+     class="btn">
+     Login with Discord
   </a>
 </div>
 
