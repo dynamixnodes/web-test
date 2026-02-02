@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>FrostNodes | IT Solutions</title>
-  
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-/* Removed font-family:Poppins to use default system font */
 
-body{background:#0b0f1a;color:#fff}
+<title>FrostNodes | IT Solutions</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#0b0f1a;
+  color:#ffffff;
+}
 
 /* NAVBAR */
 nav{
@@ -21,24 +28,32 @@ nav{
   background:#0f1629;
   position:sticky;
   top:0;
-  z-index:1000
+  z-index:1000;
 }
 nav a{
   color:#ccc;
   text-decoration:none;
   margin:0 14px;
   font-weight:500;
-  transition:.3s
 }
 nav a:hover{color:#5cc8ff}
-.logo{font-size:22px;font-weight:700;color:#5cc8ff}
-.menu{display:flex;align-items:center}
 
-/* SERVICES DROPDOWN */
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#5cc8ff;
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+}
+
+/* DROPDOWN */
 .dropdown{position:relative}
 .dropdown-content{
   position:absolute;
-  top:45px;
+  top:42px;
   left:0;
   background:#121a30;
   min-width:220px;
@@ -47,91 +62,104 @@ nav a:hover{color:#5cc8ff}
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
-  transition:.3s
+  transition:.3s;
 }
 .dropdown-content a{
   display:block;
   padding:14px 18px;
-  border-bottom:1px solid #1c2a52
+  border-bottom:1px solid #1c2a52;
 }
 .dropdown-content a:last-child{border-bottom:none}
 .dropdown-content a:hover{
   background:#1c2a52;
-  padding-left:24px
 }
 .dropdown:hover .dropdown-content{
   opacity:1;
   visibility:visible;
-  transform:translateY(0)
+  transform:translateY(0);
 }
 
 /* BUTTON */
 .btn{
   background:#5cc8ff;
   color:#000;
-  padding:8px 14px;
+  padding:8px 16px;
   border-radius:6px;
-  font-weight:600
+  font-weight:600;
 }
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:90px 8% 80px;
-  background:radial-gradient(circle at top,#13203d,#0b0f1a)
+  padding:100px 8% 90px;
+  background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
 
-/* AMD BOX */
 .amd-box{
   display:inline-block;
   margin-bottom:30px;
-  padding:14px 28px;
+  padding:14px 30px;
   border-radius:14px;
   border:2px solid #5cc8ff;
   color:#5cc8ff;
   font-weight:600;
   animation:jump 1.8s infinite;
-  box-shadow:0 0 18px rgba(92,200,255,.35)
-}
-@keyframes jump{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-22px)}
+  box-shadow:0 0 18px rgba(92,200,255,.35);
 }
 
-.hero h1{font-size:46px}
+@keyframes jump{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-24px)}
+}
+
+.hero h1{
+  font-size:46px;
+  margin-bottom:18px;
+}
 .hero span{color:#5cc8ff}
 .hero p{
   color:#aaa;
   max-width:680px;
-  margin:20px auto
+  margin:0 auto;
+  font-size:16px;
 }
 
 /* WHY CHOOSE */
-section{padding:90px 8%}
+section{
+  padding:90px 8%;
+}
+
 section h2{
   text-align:center;
   font-size:34px;
-  margin-bottom:55px
+  margin-bottom:55px;
 }
+
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:30px
+  gap:30px;
 }
+
 .feature{
   background:#121a30;
   border:1px solid #1c2a52;
   padding:30px;
   border-radius:16px;
-  transition:.4s;
-  cursor:pointer
+  transition:.35s;
 }
-.feature h3{margin-bottom:10px;color:#5cc8ff}
-.feature p{color:#bbb;font-size:14px}
+.feature h3{
+  color:#5cc8ff;
+  margin-bottom:10px;
+}
+.feature p{
+  color:#bbb;
+  font-size:14px;
+}
 .feature:hover{
-  transform:translateY(-12px) scale(1.03);
+  transform:translateY(-12px);
   box-shadow:0 25px 50px rgba(92,200,255,.18);
-  border-color:#5cc8ff
+  border-color:#5cc8ff;
 }
 
 /* FOOTER */
@@ -139,7 +167,7 @@ footer{
   text-align:center;
   padding:30px;
   background:#0f1629;
-  color:#777
+  color:#777;
 }
 
 /* RESPONSIVE */
@@ -184,25 +212,45 @@ footer{
 <div class="hero">
   <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
   <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
-  <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
+  <p>
+    High-performance Minecraft, VPS, Bot & Domain hosting built for speed,
+    security, and reliability.
+  </p>
 </div>
 
 <section>
   <h2>Why Choose FrostNodes?</h2>
 
   <div class="features">
-    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade protection for your servers</p></div>
-    <div class="feature"><h3>NVMe SSD Storage</h3><p>Lightning-fast performance with NVMe drives</p></div>
-    <div class="feature"><h3>Instant Setup</h3><p>Get your server running in minutes</p></div>
-    <div class="feature"><h3>India Location</h3><p>Low latency for Indian players</p></div>
-    <div class="feature"><h3>24/7 Support</h3><p>Always here to help you succeed</p></div>
-    <div class="feature"><h3>99.9% Uptime</h3><p>Reliable infrastructure you can trust</p></div>
+    <div class="feature">
+      <h3>DDoS Protection</h3>
+      <p>Enterprise-grade protection for your servers</p>
+    </div>
+    <div class="feature">
+      <h3>NVMe SSD Storage</h3>
+      <p>Ultra-fast performance with NVMe drives</p>
+    </div>
+    <div class="feature">
+      <h3>Instant Setup</h3>
+      <p>Your server is ready in minutes</p>
+    </div>
+    <div class="feature">
+      <h3>India Location</h3>
+      <p>Low latency for Indian players</p>
+    </div>
+    <div class="feature">
+      <h3>24/7 Support</h3>
+      <p>We’re always here to help</p>
+    </div>
+    <div class="feature">
+      <h3>99.9% Uptime</h3>
+      <p>Reliable infrastructure you can trust</p>
+    </div>
   </div>
 </section>
 
 <footer>
-  <a href="/" style="color:#5cc8ff;text-decoration:none;font-weight:600;">Go Back Home</a>
-  <p>© 2026 FrostNodes. All rights reserved.</p>
+  © 2026 FrostNodes. All rights reserved.
 </footer>
 
 </body>
