@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>FrostNodes | IT Solutions</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <style>
 :root{
@@ -21,7 +19,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 
 body{
@@ -45,25 +43,14 @@ nav a{
   color:#cfcfcf;
   text-decoration:none;
   margin:0 14px;
-  font-weight:500;
-  transition:.25s;
 }
-
-nav a:hover{
-  color:var(--accent);
-}
+nav a:hover{color:var(--accent)}
 
 .logo{
   display:flex;
   align-items:center;
   gap:12px;
 }
-
-.logo img{
-  width:34px;
-  height:34px;
-}
-
 .logo span{
   font-size:22px;
   font-weight:700;
@@ -72,16 +59,8 @@ nav a:hover{
   -webkit-text-fill-color:transparent;
 }
 
-.menu{
-  display:flex;
-  align-items:center;
-}
-
 /* DROPDOWN */
-.dropdown{
-  position:relative;
-}
-
+.dropdown{position:relative;}
 .dropdown-content{
   position:absolute;
   top:120%;
@@ -90,45 +69,19 @@ nav a:hover{
   border:1px solid var(--border);
   border-radius:14px;
   min-width:200px;
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
   transition:.25s;
-  z-index:999;
 }
-
-.dropdown-content a{
-  display:block;
-  padding:14px 18px;
-  margin:0;
-  font-size:14px;
-}
-
-.dropdown-content a:hover{
-  background:rgba(92,200,255,.08);
-}
-
 .dropdown:hover .dropdown-content{
   opacity:1;
   visibility:visible;
   transform:translateY(0);
 }
-
-/* DISCORD BUTTON */
-.discord-box{
-  padding:8px 16px;
-  border-radius:10px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  font-weight:600;
-  text-decoration:none;
-  transition:.25s;
-}
-
-.discord-box:hover{
-  background:var(--accent);
-  color:#000;
+.dropdown-content a{
+  display:block;
+  padding:14px 18px;
 }
 
 /* HERO */
@@ -137,45 +90,20 @@ nav a:hover{
   padding:100px 8% 90px;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
-
-.hero h1{
-  font-size:46px;
-}
-
+.hero h1{font-size:46px;}
 .hero span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .hero p{
   color:#aaa;
   max-width:680px;
   margin:20px auto;
 }
 
-/* AMD BOX */
-.amd-box{
-  display:inline-block;
-  margin-bottom:30px;
-  padding:14px 28px;
-  border-radius:14px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  font-weight:600;
-  animation:jump 1.8s infinite;
-  box-shadow:0 0 18px rgba(92,200,255,.35);
-}
-
-@keyframes jump{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-22px)}
-}
-
 /* SECTIONS */
-section{
-  padding:90px 8%;
-}
+section{padding:90px 8%;}
 
 section h2{
   text-align:center;
@@ -183,76 +111,101 @@ section h2{
   margin-bottom:55px;
 }
 
-section h2 span{
+/* SERVICE CARDS */
+.services{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+}
+
+.service-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.3s;
+}
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--accent);
+}
+
+.service-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.service-content{
+  padding:24px;
+}
+
+.price{
+  font-size:26px;
+  font-weight:700;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  margin:10px 0;
 }
 
-/* FEATURES */
+.features-list{
+  color:#bbb;
+  font-size:14px;
+  margin-top:10px;
+}
+
+/* WHY CHOOSE */
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:30px;
 }
-
 .feature{
   background:var(--card);
   border:1px solid var(--border);
   padding:30px;
-  border-radius:50%;
-  aspect-ratio:1/1;
-  text-align:center;
+  border-radius:16px;
   transition:.35s;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
 }
-
-.feature h3{
-  margin-bottom:10px;
-  color:var(--accent);
-}
-
-.feature p{
-  color:#fff;
-  font-size:14px;
-}
-
 .feature:hover{
   transform:translateY(-10px);
-  box-shadow:0 20px 40px rgba(92,200,255,.18);
   border-color:var(--accent);
 }
 
-/* SUPPORT CTA */
+/* CMD PROMPT */
+.cmd-wrapper{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  margin-top:70px;
+}
+.cmd-text{
+  flex:1;
+  color:#aaa;
+  font-size:18px;
+}
+.cmd-card{
+  flex:1;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:30px;
+}
+
+/* SUPPORT */
 .support-cta{
   text-align:center;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
-
-.support-cta p{
-  color:#bbb;
-  margin-bottom:35px;
-}
-
 .support-btn{
   display:inline-block;
   padding:16px 36px;
-  font-weight:700;
   border-radius:14px;
-  background:
-    linear-gradient(var(--bg),var(--bg)) padding-box,
-    var(--accent-gradient) border-box;
-  border:2px solid transparent;
-  color:#fff;
+  background:var(--accent-gradient);
+  color:#000;
+  font-weight:700;
   text-decoration:none;
-  transition:.3s;
-}
-
-.support-btn:hover{
-  transform:scale(1.07);
-  box-shadow:0 0 35px rgba(92,200,255,.6);
 }
 
 /* FOOTER */
@@ -262,95 +215,100 @@ footer{
   background:var(--nav);
   color:#777;
 }
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .features{grid-template-columns:repeat(2,1fr);}
-}
-
-@media(max-width:600px){
-  .features{grid-template-columns:1fr;}
-  .hero h1{font-size:36px;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <div class="logo">
-    <img src="/logo.png" alt="FrostNodes Logo">
-    <span>FrostNodes</span>
-  </div>
-
+  <div class="logo"><span>FrostNodes</span></div>
   <div class="menu">
     <a href="/">Home</a>
-
     <div class="dropdown">
       <a href="#">Services ▾</a>
       <div class="dropdown-content">
-        <a href="/minecraft">Minecraft Hosting</a>
-        <a href="/vps">VPS Hosting</a>
-        <a href="/bot">Bot Hosting</a>
-        <a href="/domain">Domain Plan</a>
-        <a href="/prompt">CMD Prompt</a>
+        <a>Minecraft Hosting</a>
+        <a>VPS Hosting</a>
+        <a>Bot Hosting</a>
+        <a>Domain Plan</a>
+        <a>CMD Prompt</a>
+      </div>
+    </div>
+    <a href="/support">Support</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
+  <p>High-performance hosting built for reliability.</p>
+</div>
+
+<section>
+  <h2>Our <span>Services</span></h2>
+  <div class="services">
+    <div class="service-card">
+      <img src="minecraft.jpg">
+      <div class="service-content">
+        <h3>Minecraft Hosting</h3>
+        <div class="price">₹45 / mo</div>
+        <div class="features-list">• NVMe SSD • DDoS Protection • Low Latency</div>
       </div>
     </div>
 
-    <a href="/support">Support</a>
-    <a href="/ai">Frost AI</a>
-  </div>
+    <div class="service-card">
+      <img src="vps.jpg">
+      <div class="service-content">
+        <h3>VPS Hosting</h3>
+        <div class="price">₹149 / mo</div>
+        <div class="features-list">• Root Access • AMD CPUs • Full Control</div>
+      </div>
+    </div>
 
-  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9" target="_blank">
-    Join Discord
-  </a>
-</nav>
+    <div class="service-card">
+      <img src="bot.jpg">
+      <div class="service-content">
+        <h3>Bot Hosting</h3>
+        <div class="price">₹99 / mo</div>
+        <div class="features-list">• 24/7 Online • Fast Deploy • Easy Panel</div>
+      </div>
+    </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
-  <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
-  <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
-</div>
-
-<!-- FEATURES -->
-<section>
-  <h2>Why Choose <span>FrostNodes</span>?</h2>
-
-  <div class="features">
-    <div class="feature">
-      <h3>DDoS Protection</h3>
-      <p>Enterprise-grade protection</p>
-    </div>
-    <div class="feature">
-      <h3>NVMe SSD</h3>
-      <p>Ultra-fast storage</p>
-    </div>
-    <div class="feature">
-      <h3>Instant Setup</h3>
-      <p>Ready in minutes</p>
-    </div>
-    <div class="feature">
-      <h3>India Location</h3>
-      <p>Low latency</p>
-    </div>
-    <div class="feature">
-      <h3>24/7 Support</h3>
-      <p>Always available</p>
-    </div>
-    <div class="feature">
-      <h3>99.9% Uptime</h3>
-      <p>Maximum reliability</p>
+    <div class="service-card">
+      <img src="domain.jpg">
+      <div class="service-content">
+        <h3>Domain Plan</h3>
+        <div class="price">₹79 / yr</div>
+        <div class="features-list">• DNS Control • Free Protection</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SUPPORT -->
+<section>
+  <h2>Why Choose <span>FrostNodes</span>?</h2>
+  <div class="features">
+    <div class="feature">DDoS Protection</div>
+    <div class="feature">NVMe Storage</div>
+    <div class="feature">Instant Setup</div>
+    <div class="feature">India Location</div>
+    <div class="feature">24/7 Support</div>
+    <div class="feature">99.9% Uptime</div>
+  </div>
+
+  <div class="cmd-wrapper">
+    <div class="cmd-text">
+      Checkout our Hosting Setup, Management Commands and Guides completely for free!
+    </div>
+    <div class="cmd-card">
+      <h3>CMD Prompt</h3>
+      <p>All hosting commands & guides in one place.</p>
+    </div>
+  </div>
+</section>
+
 <section class="support-cta">
-  <h2>Need <span>Support?</span></h2>
-  <p>Open a ticket and get fast assistance from our professional team.</p>
-  <a href="/support" class="support-btn">Get Support Via Tickets</a>
+  <h2>Need Support?</h2>
+  <a class="support-btn">Get Support</a>
 </section>
 
 <footer>
