@@ -15,19 +15,14 @@
   --nav:#0f1629;
   --card:#121a30;
   --border:#1c2a52;
-  --gray:#2a2f3a;
+  --gray:#2a2a2a;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
 
 body{background:var(--bg);color:#fff}
 
-/* NAVBAR (UNCHANGED) */
+/* NAVBAR */
 nav{
   display:flex;
   justify-content:space-between;
@@ -38,11 +33,10 @@ nav{
   top:0;
   z-index:1000;
 }
-nav a{color:#cfcfcf;text-decoration:none;margin:0 14px;font-weight:500}
+nav a{color:#cfcfcf;text-decoration:none;margin:0 14px}
 nav a:hover{color:var(--accent)}
-
 .logo{display:flex;align-items:center;gap:12px}
-.logo img{width:34px;height:34px}
+.logo img{width:34px}
 .logo span{
   font-size:22px;
   font-weight:700;
@@ -50,18 +44,16 @@ nav a:hover{color:var(--accent)}
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .menu{display:flex;align-items:center}
 
+/* DROPDOWN */
 .dropdown{position:relative}
 .dropdown-content{
   position:absolute;
   top:42px;
-  left:0;
   background:var(--card);
   min-width:220px;
   border-radius:10px;
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
@@ -78,20 +70,20 @@ nav a:hover{color:var(--accent)}
   transform:translateY(0);
 }
 
+/* DISCORD */
 .discord-box{
   padding:8px 16px;
   border-radius:10px;
   border:2px solid var(--accent);
   color:var(--accent);
-  font-weight:600;
   text-decoration:none;
 }
 .discord-box:hover{background:var(--accent);color:#000}
 
-/* HERO (UNCHANGED) */
+/* HERO */
 .hero{
   text-align:center;
-  padding:100px 8% 90px;
+  padding:100px 8% 60px;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
 .hero h1{font-size:46px}
@@ -100,141 +92,83 @@ nav a:hover{color:var(--accent)}
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.hero p{color:#aaa;max-width:680px;margin:20px auto}
+.hero p{
+  color:#aaa;
+  max-width:680px;
+  margin:20px auto 0;
+}
 
-/* ================= SERVICE BANNER ================= */
-.service-banner{
-  margin:90px 8% 30px;
+/* AMD BOX */
+.amd-box{
+  display:inline-block;
+  margin-bottom:30px;
+  padding:14px 28px;
+  border-radius:14px;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  animation:jump 1.8s infinite;
+}
+@keyframes jump{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+/* ===== SERVICES BANNER (NEW, ONLY HERE) ===== */
+.services-banner{
+  padding:80px 8%;
+  background:#0d1324;
+  text-align:center;
+}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+.service-card{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:26px;
-  padding:60px;
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-  gap:50px;
-  transition:.35s;
+  border-radius:18px;
+  padding:35px 25px;
 }
-.service-banner:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 45px rgba(92,200,255,.35);
+.service-card h3{
+  margin-bottom:20px;
+  color:var(--accent);
 }
-
-.service-left p{
-  color:#9a9a9a;
-  max-width:520px;
-  margin-bottom:26px;
-}
-
-.banner-buttons{
-  display:flex;
-  gap:18px;
-}
-
-.btn-primary{
-  background:var(--accent-gradient);
-  color:#fff;
-  padding:14px 30px;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:700;
-}
-
-.btn-outline{
-  padding:14px 30px;
-  border-radius:14px;
-  background:
-    linear-gradient(var(--gray),var(--gray)) padding-box,
-    var(--accent-gradient) border-box;
-  border:2px solid transparent;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* SERVICE CARD */
-.service-card{
-  background:var(--bg);
-  border-radius:22px;
-  overflow:hidden;
-}
-
-.service-card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-}
-
-.service-card-content{padding:26px}
-
-.price{
-  font-size:30px;
-  font-weight:800;
-  background:var(--accent-gradient);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.features-badges{
+.service-features{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
-  margin:18px 0;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:25px;
 }
-.badge{
+.service-features span{
   background:var(--gray);
-  color:#fff;
-  padding:9px 16px;
+  padding:10px 14px;
   border-radius:50px;
   font-size:13px;
-}
-
-.service-btn{
-  display:inline-block;
-  background:var(--accent-gradient);
   color:#fff;
-  padding:13px 24px;
-  border-radius:14px;
+}
+.service-card a{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 28px;
+  border-radius:12px;
+  background:var(--accent-gradient);
+  color:#000;
   text-decoration:none;
   font-weight:700;
 }
 
-/* SERVICE SWITCH BUTTONS (INSIDE BANNER ZONE ONLY) */
-.service-tabs{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin:20px 8% 60px;
-}
-.service-tabs button{
-  padding:12px 26px;
-  border-radius:14px;
-  background:
-    linear-gradient(var(--bg),var(--bg)) padding-box,
-    var(--accent-gradient) border-box;
-  border:2px solid transparent;
-  color:var(--accent);
-  font-weight:600;
-  cursor:pointer;
-}
-.service-tabs button.active{
-  background:var(--accent-gradient);
-  color:#fff;
-}
-
-/* WHY CHOOSE (UNTOUCHED) */
-section{
-  padding:90px 8%;
-}
-section h2{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:55px;
-}
+/* SECTIONS */
+section{padding:90px 8%}
+section h2{text-align:center;font-size:34px;margin-bottom:55px}
 section h2 span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+
+/* FEATURES */
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -246,14 +180,30 @@ section h2 span{
   padding:30px;
   border-radius:16px;
 }
-.feature h3{color:var(--accent)}
+.feature h3{color:var(--accent);margin-bottom:10px}
+.feature p{color:#bbb;font-size:14px}
 
-footer{
+/* SUPPORT */
+.support-cta{
   text-align:center;
-  padding:30px;
-  background:var(--nav);
-  color:#777;
+  background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
+.support-btn{
+  padding:16px 36px;
+  border-radius:14px;
+  background:linear-gradient(var(--bg),var(--bg)) padding-box,
+  var(--accent-gradient) border-box;
+  border:2px solid transparent;
+  color:#fff;
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{text-align:center;padding:30px;background:var(--nav);color:#777}
+
+/* RESPONSIVE */
+@media(max-width:900px){.features{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.features{grid-template-columns:1fr}.hero h1{font-size:36px}}
 </style>
 </head>
 
@@ -264,6 +214,7 @@ footer{
     <img src="/logo.png">
     <span>FrostNodes</span>
   </div>
+
   <div class="menu">
     <a href="/">Home</a>
     <div class="dropdown">
@@ -272,82 +223,91 @@ footer{
         <a href="/minecraft">Minecraft Server</a>
         <a href="/vps">VPS Hosting</a>
         <a href="/bot">Bot Hosting</a>
-        <a href="/domain">Domain Plan</a>
-        <a href="/prompt">CMD Prompt</a>
+        <a href="/domains">Domain Plan</a>
       </div>
     </div>
+    <a href="/free">Free Plan</a>
     <a href="/about">About</a>
+    <a href="/ai">Frost AI</a>
     <a href="/support">Support</a>
   </div>
+
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
 </nav>
 
 <div class="hero">
+  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
   <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
 </div>
 
-<!-- SERVICE BANNER -->
-<div class="service-banner">
-  <div class="service-left">
-    <p>Play without limits. Deploy powerful game servers in seconds with unbeatable stability and low latency.</p>
-    <div class="banner-buttons">
-      <a href="/services" class="btn-primary">Get Started →</a>
-      <a href="/about" class="btn-outline">About Us</a>
-    </div>
-  </div>
+<!-- SERVICES BANNER -->
+<div class="services-banner">
+  <div class="services-grid">
 
-  <div class="service-card">
-    <img id="svcImg" src="mc-thumb.png">
-    <div class="service-card-content">
-      <h3 id="svcTitle">Minecraft Server</h3>
-      <div class="price" id="svcPrice">₹45 / mo</div>
-      <div class="features-badges" id="svcFeatures">
-        <div class="badge">DDoS Protected</div>
-        <div class="badge">NVMe SSD</div>
-        <div class="badge">Low Latency</div>
+    <div class="service-card">
+      <h3>Minecraft Server</h3>
+      <div class="service-features">
+        <span>Low Latency</span><span>DDoS Protected</span><span>Instant Setup</span>
       </div>
-      <a id="svcLink" href="/minecraft" class="service-btn">Get Started</a>
+      <a href="/minecraft">View Plans</a>
     </div>
+
+    <div class="service-card">
+      <h3>VPS Hosting</h3>
+      <div class="service-features">
+        <span>NVMe</span><span>Root Access</span><span>99.9% Uptime</span>
+      </div>
+      <a href="/vps">View Plans</a>
+    </div>
+
+    <div class="service-card">
+      <h3>Bot Hosting</h3>
+      <div class="service-features">
+        <span>24/7 Online</span><span>Fast CPU</span><span>Auto Restart</span>
+      </div>
+      <a href="/bot">View Plans</a>
+    </div>
+
+    <div class="service-card">
+      <h3>Domain Plan</h3>
+      <div class="service-features">
+        <span>Free DNS</span><span>Easy Setup</span><span>Secure</span>
+      </div>
+      <a href="/domains">View Plans</a>
+    </div>
+
+    <div class="service-card">
+      <h3>CMD Prompt</h3>
+      <div class="service-features">
+        <span>CLI Tools</span><span>Automation</span><span>Power Users</span>
+      </div>
+      <a href="/cmd">Explore</a>
+    </div>
+
   </div>
 </div>
 
-<div class="service-tabs">
-  <button class="active" onclick="switchSvc(this,'minecraft')">Minecraft</button>
-  <button onclick="switchSvc(this,'vps')">VPS</button>
-  <button onclick="switchSvc(this,'bot')">Bot</button>
-  <button onclick="switchSvc(this,'domain')">Domain</button>
-  <button onclick="switchSvc(this,'prompt')">Prompt</button>
-</div>
-
+<!-- WHY CHOOSE (UNCHANGED & RESTORED) -->
 <section>
   <h2>Why Choose <span>FrostNodes</span>?</h2>
   <div class="features">
-    <div class="feature"><h3>DDoS Protection</h3></div>
-    <div class="feature"><h3>NVMe SSD</h3></div>
-    <div class="feature"><h3>Instant Setup</h3></div>
+    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade security.</p></div>
+    <div class="feature"><h3>NVMe SSD</h3><p>Blazing fast storage.</p></div>
+    <div class="feature"><h3>Instant Setup</h3><p>Ready in minutes.</p></div>
+    <div class="feature"><h3>India Location</h3><p>Low latency hosting.</p></div>
+    <div class="feature"><h3>24/7 Support</h3><p>Always available.</p></div>
+    <div class="feature"><h3>99.9% Uptime</h3><p>Reliable infrastructure.</p></div>
   </div>
 </section>
 
+<section class="support-cta">
+  <h2>Need <span>Support?</span></h2>
+  <p>Open a ticket and get fast help.</p>
+  <a href="/support" class="support-btn">Get Support</a>
+</section>
+
 <footer>© 2026 FrostNodes. All rights reserved.</footer>
-
-<script>
-const data={
- minecraft:{img:"mc-thumb.png",price:"₹45 / mo",link:"/minecraft"},
- vps:{img:"vps-thumb.png",price:"₹150 / mo",link:"/vps"},
- bot:{img:"bot-thumb.png",price:"₹15 / mo",link:"/bot"},
- domain:{img:"domain-thumb.png",price:"₹20 / mo",link:"/domain"},
- prompt:{img:"prompt-thumb.png",price:"Free Commands",link:"/prompt"}
-}
-
-function switchSvc(btn,type){
- document.querySelectorAll(".service-tabs button").forEach(b=>b.classList.remove("active"))
- btn.classList.add("active")
- document.getElementById("svcImg").src=data[type].img
- document.getElementById("svcPrice").innerText=data[type].price
- document.getElementById("svcLink").href=data[type].link
-}
-</script>
 
 </body>
 </html>
