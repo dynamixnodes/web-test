@@ -10,11 +10,12 @@
 <style>
 :root{
   --accent:#5cc8ff;
-  --gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
+  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
   --bg:#0b0f1a;
   --nav:#0f1629;
   --card:#121a30;
   --border:#1c2a52;
+  --gray:#2a2f3a;
 }
 
 *{
@@ -46,7 +47,6 @@ nav a{
   text-decoration:none;
   margin:0 14px;
   font-weight:500;
-  transition:.25s;
 }
 nav a:hover{color:var(--accent)}
 
@@ -59,17 +59,13 @@ nav a:hover{color:var(--accent)}
 .logo span{
   font-size:22px;
   font-weight:700;
-  background:var(--gradient);
+  background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.menu{
-  display:flex;
-  align-items:center;
-}
+.menu{display:flex;align-items:center;}
 
-/* DROPDOWN */
 .dropdown{position:relative;}
 .dropdown-content{
   position:absolute;
@@ -89,18 +85,12 @@ nav a:hover{color:var(--accent)}
   padding:14px 18px;
   border-bottom:1px solid var(--border);
 }
-.dropdown-content a:last-child{border-bottom:none;}
-.dropdown-content a:hover{
-  background:var(--border);
-  padding-left:24px;
-}
 .dropdown:hover .dropdown-content{
   opacity:1;
   visibility:visible;
   transform:translateY(0);
 }
 
-/* DISCORD */
 .discord-box{
   padding:8px 16px;
   border-radius:10px;
@@ -122,7 +112,7 @@ nav a:hover{color:var(--accent)}
 }
 .hero h1{font-size:46px;}
 .hero span{
-  background:var(--gradient);
+  background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -132,124 +122,131 @@ nav a:hover{color:var(--accent)}
   margin:20px auto;
 }
 
-/* AMD */
-.amd-box{
-  display:inline-block;
-  margin-bottom:30px;
-  padding:14px 28px;
-  border-radius:14px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  font-weight:600;
-  animation:jump 1.8s infinite;
-}
-@keyframes jump{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-22px)}
-}
-
 /* SERVICE BANNER */
-.service-section{
-  padding:80px 8%;
-  background:radial-gradient(circle at top,#13203d,#0b0f1a);
-}
-
-.service-tabs{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:40px;
-  flex-wrap:wrap;
-}
-
-.service-tab{
-  padding:10px 22px;
-  border-radius:12px;
-  background:var(--gradient);
-  color:#fff;
-  font-weight:600;
-}
-
 .service-banner{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
+  margin:80px 8%;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:20px;
+  border-radius:22px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
   padding:40px;
 }
 
-.service-left p{
-  color:#aaa;
-  max-width:420px;
+.service-text p{
+  color:#999;
+  margin-bottom:20px;
+  max-width:480px;
 }
 
-.buttons{
-  margin-top:28px;
+.banner-buttons{
   display:flex;
   gap:16px;
 }
 
 .btn-primary{
+  background:var(--accent-gradient);
+  color:#fff;
   padding:14px 28px;
   border-radius:14px;
-  background:var(--gradient);
-  color:#fff;
-  font-weight:700;
   text-decoration:none;
+  font-weight:700;
 }
 
 .btn-outline{
   padding:14px 28px;
   border-radius:14px;
-  background:
-    linear-gradient(#1a223a,#1a223a) padding-box,
-    var(--gradient) border-box;
   border:2px solid transparent;
+  background:
+    linear-gradient(var(--gray),var(--gray)) padding-box,
+    var(--accent-gradient) border-box;
   color:#fff;
-  font-weight:700;
   text-decoration:none;
+  font-weight:600;
 }
 
 /* SERVICE CARD */
 .service-card{
-  background:url('/mc-thumb.png') center/cover;
+  background:var(--bg);
   border-radius:18px;
-  padding:30px;
-  min-height:300px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  box-shadow:inset 0 0 0 2000px rgba(11,15,26,.78);
+  overflow:hidden;
+}
+
+.service-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.service-card-content{
+  padding:24px;
 }
 
 .price{
-  font-size:26px;
+  font-size:28px;
   font-weight:800;
-  background:var(--gradient);
+  background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.features-list span{
-  display:block;
-  font-size:14px;
-  color:#ddd;
+.features-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:18px 0;
 }
 
-.card-btn{
-  padding:12px 26px;
-  border-radius:12px;
-  background:var(--gradient);
+.badge{
+  background:var(--gray);
   color:#fff;
-  font-weight:700;
-  text-decoration:none;
-  width:max-content;
+  padding:8px 14px;
+  border-radius:50px;
+  font-size:13px;
 }
 
-/* FEATURES */
-section{padding:90px 8%;}
+.service-btn{
+  display:inline-block;
+  margin-top:14px;
+  background:var(--accent-gradient);
+  color:#fff;
+  padding:12px 22px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* SERVICE BUTTONS BELOW BANNER */
+.service-tabs{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:30px 0 0;
+}
+.service-tabs a{
+  padding:12px 26px;
+  border-radius:14px;
+  background:var(--accent-gradient);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* WHY CHOOSE (RESTORED & UNTOUCHED) */
+section{
+  padding:90px 8%;
+}
+section h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:55px;
+}
+section h2 span{
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -261,6 +258,7 @@ section{padding:90px 8%;}
   padding:30px;
   border-radius:16px;
 }
+.feature h3{color:var(--accent);}
 
 /* FOOTER */
 footer{
@@ -268,12 +266,6 @@ footer{
   padding:30px;
   background:var(--nav);
   color:#777;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .service-banner{grid-template-columns:1fr;}
-  .features{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -298,9 +290,7 @@ footer{
         <a href="/prompt">CMD Prompt</a>
       </div>
     </div>
-    <a href="/free">Free Plan</a>
-    <a href="/about">About Us</a>
-    <a href="/ai">Frost AI</a>
+    <a href="/about">About</a>
     <a href="/support">Support</a>
   </div>
 
@@ -308,48 +298,54 @@ footer{
 </nav>
 
 <div class="hero">
-  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
   <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
 </div>
 
-<section class="service-section">
-  <div class="service-tabs">
-    <div class="service-tab">Minecraft</div>
-    <div class="service-tab">VPS</div>
-    <div class="service-tab">Bot</div>
-    <div class="service-tab">Domain</div>
-    <div class="service-tab">Prompt</div>
+<!-- SERVICE BANNER -->
+<div class="service-banner">
+  <div class="service-text">
+    <p>Play without limits. Deploy powerful game servers in seconds with unbeatable stability and low latency.</p>
+    <div class="banner-buttons">
+      <a href="/services" class="btn-primary">Get Started →</a>
+      <a href="/about" class="btn-outline">About Us</a>
+    </div>
   </div>
 
-  <div class="service-banner">
-    <div class="service-left">
-      <p>
-        Play without limits. Deploy powerful servers in seconds with unbeatable stability and low latency.
-      </p>
-      <div class="buttons">
-        <a href="/services" class="btn-primary">Get Started →</a>
-        <a href="/about" class="btn-outline">About Us</a>
-      </div>
-    </div>
-
-    <div class="service-card">
+  <div class="service-card">
+    <img src="mc-thumb.png">
+    <div class="service-card-content">
       <h3>Minecraft Server</h3>
       <div class="price">₹45 / mo</div>
-      <div class="features-list">
-        <span>● NVMe SSD</span>
-        <span>● DDoS Protection</span>
-        <span>● Instant Setup</span>
-        <span>● 24/7 Support</span>
+      <div class="features-badges">
+        <div class="badge">DDoS Protected</div>
+        <div class="badge">NVMe SSD</div>
+        <div class="badge">Low Latency</div>
       </div>
-      <a href="/minecraft" class="card-btn">Get Started</a>
+      <a href="/minecraft" class="service-btn">Get Started</a>
     </div>
+  </div>
+</div>
+
+<div class="service-tabs">
+  <a href="/minecraft">Minecraft</a>
+  <a href="/vps">VPS</a>
+  <a href="/bot">Bot</a>
+  <a href="/domain">Domain</a>
+  <a href="/prompt">CMD Prompt</a>
+</div>
+
+<!-- WHY CHOOSE FROSTNODES (RESTORED) -->
+<section>
+  <h2>Why Choose <span>FrostNodes</span>?</h2>
+  <div class="features">
+    <div class="feature"><h3>DDoS Protection</h3></div>
+    <div class="feature"><h3>NVMe SSD</h3></div>
+    <div class="feature"><h3>Instant Setup</h3></div>
   </div>
 </section>
 
-<footer>
-  © 2026 FrostNodes. All rights reserved.
-</footer>
+<footer>© 2026 FrostNodes. All rights reserved.</footer>
 
 </body>
 </html>
