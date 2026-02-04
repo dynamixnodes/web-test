@@ -46,40 +46,6 @@ nav a:hover{color:var(--accent)}
 }
 .menu{display:flex;align-items:center}
 
-/* DROPDOWN */
-.dropdown{position:relative}
-.dropdown-content{
-  position:absolute;
-  top:42px;
-  background:var(--card);
-  min-width:220px;
-  border-radius:10px;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:.25s;
-}
-.dropdown-content a{
-  display:block;
-  padding:14px 18px;
-  border-bottom:1px solid var(--border);
-}
-.dropdown:hover .dropdown-content{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-
-/* DISCORD */
-.discord-box{
-  padding:8px 16px;
-  border-radius:10px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  text-decoration:none;
-}
-.discord-box:hover{background:var(--accent);color:#000}
-
 /* HERO */
 .hero{
   text-align:center;
@@ -113,15 +79,14 @@ nav a:hover{color:var(--accent)}
   50%{transform:translateY(-18px)}
 }
 
-/* ===== SERVICES BANNER (NEW, ONLY HERE) ===== */
+/* ===== SERVICE BANNER (SAME STYLE, NO PRICING) ===== */
 .services-banner{
   padding:80px 8%;
   background:#0d1324;
-  text-align:center;
 }
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:30px;
 }
 .service-card{
@@ -129,6 +94,13 @@ nav a:hover{color:var(--accent)}
   border:1px solid var(--border);
   border-radius:18px;
   padding:35px 25px;
+  text-align:center;
+  transition:.35s;
+}
+.service-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 40px rgba(92,200,255,.25);
+  border-color:var(--accent);
 }
 .service-card h3{
   margin-bottom:20px;
@@ -139,7 +111,7 @@ nav a:hover{color:var(--accent)}
   flex-wrap:wrap;
   gap:10px;
   justify-content:center;
-  margin-bottom:25px;
+  margin-bottom:22px;
 }
 .service-features span{
   background:var(--gray);
@@ -150,8 +122,7 @@ nav a:hover{color:var(--accent)}
 }
 .service-card a{
   display:inline-block;
-  margin-top:10px;
-  padding:12px 28px;
+  padding:12px 30px;
   border-radius:12px;
   background:var(--accent-gradient);
   color:#000;
@@ -168,7 +139,7 @@ section h2 span{
   -webkit-text-fill-color:transparent;
 }
 
-/* FEATURES */
+/* WHY CHOOSE FEATURES (ANIMATION RESTORED) */
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -179,31 +150,63 @@ section h2 span{
   border:1px solid var(--border);
   padding:30px;
   border-radius:16px;
+  transition:.35s;
+}
+.feature:hover{
+  transform:translateY(-14px) scale(1.03);
+  box-shadow:0 25px 45px rgba(92,200,255,.25);
+  border-color:var(--accent);
 }
 .feature h3{color:var(--accent);margin-bottom:10px}
 .feature p{color:#bbb;font-size:14px}
 
-/* SUPPORT */
+/* SUPPORT CTA (BUG FIXED) */
 .support-cta{
   text-align:center;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
+.support-cta p{
+  color:#bbb;
+  margin-bottom:35px;
+}
 .support-btn{
-  padding:16px 36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 40px;
+  line-height:1;
+  font-size:16px;
+  font-weight:700;
   border-radius:14px;
-  background:linear-gradient(var(--bg),var(--bg)) padding-box,
-  var(--accent-gradient) border-box;
+  background:
+    linear-gradient(var(--bg),var(--bg)) padding-box,
+    var(--accent-gradient) border-box;
   border:2px solid transparent;
   color:#fff;
   text-decoration:none;
+  transition:.3s;
+}
+.support-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 35px rgba(92,200,255,.6);
 }
 
 /* FOOTER */
-footer{text-align:center;padding:30px;background:var(--nav);color:#777}
+footer{
+  text-align:center;
+  padding:30px;
+  background:var(--nav);
+  color:#777;
+}
 
 /* RESPONSIVE */
-@media(max-width:900px){.features{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.features{grid-template-columns:1fr}.hero h1{font-size:36px}}
+@media(max-width:900px){
+  .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .features{grid-template-columns:1fr}
+  .hero h1{font-size:36px}
+}
 </style>
 </head>
 
@@ -214,25 +217,6 @@ footer{text-align:center;padding:30px;background:var(--nav);color:#777}
     <img src="/logo.png">
     <span>FrostNodes</span>
   </div>
-
-  <div class="menu">
-    <a href="/">Home</a>
-    <div class="dropdown">
-      <a href="#">Services ▾</a>
-      <div class="dropdown-content">
-        <a href="/minecraft">Minecraft Server</a>
-        <a href="/vps">VPS Hosting</a>
-        <a href="/bot">Bot Hosting</a>
-        <a href="/domains">Domain Plan</a>
-      </div>
-    </div>
-    <a href="/free">Free Plan</a>
-    <a href="/about">About</a>
-    <a href="/ai">Frost AI</a>
-    <a href="/support">Support</a>
-  </div>
-
-  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
 </nav>
 
 <div class="hero">
@@ -241,16 +225,16 @@ footer{text-align:center;padding:30px;background:var(--nav);color:#777}
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
 </div>
 
-<!-- SERVICES BANNER -->
+<!-- SERVICE BANNER -->
 <div class="services-banner">
   <div class="services-grid">
 
     <div class="service-card">
       <h3>Minecraft Server</h3>
       <div class="service-features">
-        <span>Low Latency</span><span>DDoS Protected</span><span>Instant Setup</span>
+        <span>Low Latency</span><span>DDoS Protection</span><span>Instant Setup</span>
       </div>
-      <a href="/minecraft">View Plans</a>
+      <a href="/minecraft">Explore</a>
     </div>
 
     <div class="service-card">
@@ -258,42 +242,34 @@ footer{text-align:center;padding:30px;background:var(--nav);color:#777}
       <div class="service-features">
         <span>NVMe</span><span>Root Access</span><span>99.9% Uptime</span>
       </div>
-      <a href="/vps">View Plans</a>
+      <a href="/vps">Explore</a>
     </div>
 
     <div class="service-card">
       <h3>Bot Hosting</h3>
       <div class="service-features">
-        <span>24/7 Online</span><span>Fast CPU</span><span>Auto Restart</span>
+        <span>24/7 Online</span><span>Auto Restart</span><span>Fast CPU</span>
       </div>
-      <a href="/bot">View Plans</a>
+      <a href="/bot">Explore</a>
     </div>
 
     <div class="service-card">
       <h3>Domain Plan</h3>
       <div class="service-features">
-        <span>Free DNS</span><span>Easy Setup</span><span>Secure</span>
+        <span>Free DNS</span><span>Secure</span><span>Easy Setup</span>
       </div>
-      <a href="/domains">View Plans</a>
-    </div>
-
-    <div class="service-card">
-      <h3>CMD Prompt</h3>
-      <div class="service-features">
-        <span>CLI Tools</span><span>Automation</span><span>Power Users</span>
-      </div>
-      <a href="/cmd">Explore</a>
+      <a href="/domains">Explore</a>
     </div>
 
   </div>
 </div>
 
-<!-- WHY CHOOSE (UNCHANGED & RESTORED) -->
+<!-- WHY CHOOSE (ANIMATION BACK) -->
 <section>
   <h2>Why Choose <span>FrostNodes</span>?</h2>
   <div class="features">
     <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade security.</p></div>
-    <div class="feature"><h3>NVMe SSD</h3><p>Blazing fast storage.</p></div>
+    <div class="feature"><h3>NVMe SSD</h3><p>Ultra-fast storage.</p></div>
     <div class="feature"><h3>Instant Setup</h3><p>Ready in minutes.</p></div>
     <div class="feature"><h3>India Location</h3><p>Low latency hosting.</p></div>
     <div class="feature"><h3>24/7 Support</h3><p>Always available.</p></div>
@@ -303,7 +279,7 @@ footer{text-align:center;padding:30px;background:var(--nav);color:#777}
 
 <section class="support-cta">
   <h2>Need <span>Support?</span></h2>
-  <p>Open a ticket and get fast help.</p>
+  <p>Open a ticket and get fast assistance from our team.</p>
   <a href="/support" class="support-btn">Get Support</a>
 </section>
 
