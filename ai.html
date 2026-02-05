@@ -97,14 +97,19 @@ header{text-align:center;padding:60px 20px 30px;}
   border-radius:12px 12px 12px 0;
 }
 
-/* LOADING */
-.loading-symbol{
-  width:16px;
-  height:16px;
-  border:3px solid #5cc8ff;
-  border-top:3px solid #00ffff;
+/* ✅ PROPER CIRCULAR THINKING LOADER */
+.thinking{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.thinking-circle{
+  width:18px;
+  height:18px;
+  border:3px solid rgba(92,200,255,.35);
+  border-top:3px solid #5cc8ff;
   border-radius:50%;
-  animation:spin 1s linear infinite;
+  animation:spin 0.9s linear infinite;
 }
 @keyframes spin{
   to{transform:rotate(360deg);}
@@ -175,68 +180,64 @@ footer{color:#777;padding:20px;}
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
+let lastTopic = "";
+
 function normalizeInput(text){
-  let msg = text.toLowerCase();
-
-  const replacements = {
-    "hlo":"hello","helo":"hello","hii":"hi","yoo":"yo","yo":"hello",
-    "sup":"hello","wassup":"hello","wyd":"what are you doing",
-    "hw r u":"how are you","how r u":"how are you","how ru":"how are you",
-    "pls":"please","plz":"please","thx":"thanks","ty":"thanks",
-    "u":"you","ur":"your",
-    "minecrft":"minecraft","mc":"minecraft",
-    "domian":"domain","doman":"domain",
-    "vpss":"vps","botts":"bot"
-  };
-
-  Object.entries(replacements).forEach(([k,v])=>{
-    msg = msg.replace(new RegExp("\\b"+k+"\\b","g"), v);
-  });
-
-  return msg.replace(/[^\w\s]/g,"").trim();
+  return text.toLowerCase().replace(/[^\w\s]/g,"").trim();
 }
 
 function getBotReply(input){
   const msg = normalizeInput(input);
 
-  if(/hello|hi|how are you/.test(msg))
-    return "Hey! 😄 I’m Frost AI from FrostNodes. I’m doing great! How can I help you today?";
-
-  if(msg.includes("thanks"))
-    return "Anytime! 💙 If you need hosting help, I’ve got you.";
-
-  if(msg.includes("founder"))
-    return "FrostNodes was founded by DevNikhil.";
-
-  if(msg.includes("owner"))
-    return "FrostNodes is owned by Dynamind and Monkey D Luffy.";
-
-  if(msg.includes("ceo"))
-    return "The CEO of FrostNodes is Nishit.";
-
-  if(msg.includes("about frostnodes") || msg.includes("what is frostnodes"))
-    return "FrostNodes is an India-based hosting company offering budget-friendly and exclusive plans for Minecraft, VPS, Bot Hosting, and Domains.";
-
-  if(msg.includes("vps")){
-    return "A VPS gives you full control with dedicated resources. You can host websites, Minecraft servers, Discord bots, game panels, VPNs, and more.";
+  /* Greetings */
+  if(/hello|hi|hey|how are you/.test(msg)){
+    lastTopic = "greeting";
+    return "Hey! 😄 I’m Frost AI from FrostNodes. How can I help you today?";
   }
 
-  if(msg.includes("minecraft")){
-    return "Minecraft hosting lets you run multiplayer servers 24/7 with low latency, plugin support, DDoS protection, and an easy control panel.";
-  }
-
-  if(msg.includes("bot")){
-    return "Bot hosting keeps your Discord or Telegram bots online 24/7 without needing your PC.";
-  }
-
+  /* DOMAIN */
   if(msg.includes("domain")){
-    return "A domain is your website address, like frostnodes.in. It makes your hosting look professional and trusted.";
+    lastTopic = "domain";
+    return "A domain is your website’s address on the internet. It’s what people type to visit your site.";
   }
 
-  if(msg.includes("support") || msg.includes("help"))
-    return "You can contact FrostNodes support via Discord tickets for fast assistance.";
+  if((msg.includes("example") || msg.includes("examples") || msg.includes("more")) && lastTopic==="domain"){
+    return "Here are some domain examples:\n• frostnodes.in\n• google.com\n• discord.com\n• youtube.com\n• github.io\n\nDomains usually end with extensions like .com, .in, .net, .org.";
+  }
 
-  return "I specialize only in FrostNodes hosting services. Try asking about VPS, Minecraft, bots, or domains.";
+  /* VPS */
+  if(msg.includes("vps")){
+    lastTopic = "vps";
+    return "A VPS (Virtual Private Server) is like your own computer on the internet with dedicated resources and full control.";
+  }
+
+  if((msg.includes("example") || msg.includes("use")) && lastTopic==="vps"){
+    return "You can use a VPS for:\n• Hosting websites\n• Minecraft servers\n• Discord bots\n• Game panels\n• VPNs";
+  }
+
+  /* MINECRAFT */
+  if(msg.includes("minecraft")){
+    lastTopic = "minecraft";
+    return "Minecraft hosting lets you run a 24/7 multiplayer server with plugins, mods, and DDoS protection.";
+  }
+
+  /* BOT */
+  if(msg.includes("bot")){
+    lastTopic = "bot";
+    return "Bot hosting keeps your Discord or Telegram bots online 24/7 without keeping your PC on.";
+  }
+
+  /* COMPANY INFO */
+  if(msg.includes("ceo")) return "The CEO of FrostNodes is Nishit.";
+  if(msg.includes("founder")) return "FrostNodes was founded by DevNikhil.";
+  if(msg.includes("owner")) return "FrostNodes is owned by Dynamind and Monkey D Luffy.";
+
+  /* SUPPORT */
+  if(msg.includes("support") || msg.includes("help")){
+    return "You can contact FrostNodes support via Discord tickets for fast assistance.";
+  }
+
+  return "I specialize in FrostNodes services like VPS, Minecraft, bot hosting, and domains. Ask me about any of them!";
 }
 
 function sendMessage(){
@@ -251,14 +252,18 @@ function sendMessage(){
 
   const botDiv = document.createElement("div");
   botDiv.className = "chat-message bot";
-  botDiv.innerHTML = `<div class="message"><span class="loading-symbol"></span> Thinking…</div>`;
+  botDiv.innerHTML = `
+    <div class="message thinking">
+      <span class="thinking-circle"></span>
+      Thinking…
+    </div>`;
   chat.appendChild(botDiv);
   chat.scrollTop = chat.scrollHeight;
 
   setTimeout(()=>{
     botDiv.innerHTML = `<div class="message">${getBotReply(text)}</div>`;
     chat.scrollTop = chat.scrollHeight;
-  },800);
+  },900);
 }
 </script>
 
