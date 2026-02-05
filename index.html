@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>FrostNodes | IT Solutions</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
@@ -17,196 +16,94 @@
   --border:#1c2a52;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
+body{background:var(--bg);color:#fff;}
 
-body{
-  background:var(--bg);
-  color:#fff;
-}
-
-/* NAVBAR */
+/* NAV */
 nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 8%;
-  background:var(--nav);
-  position:sticky;
-  top:0;
-  z-index:1000;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 8%;background:var(--nav);position:sticky;top:0;z-index:1000;
 }
+nav a{color:#cfcfcf;text-decoration:none;margin:0 14px;font-weight:500;}
+nav a:hover{color:var(--accent);}
 
-nav a{
-  color:#cfcfcf;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:500;
-  transition:.25s;
-}
-nav a:hover{color:var(--accent)}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo img{
-  width:34px;
-  height:34px;
-}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo img{width:34px;}
 .logo span{
-  font-size:22px;
-  font-weight:700;
+  font-size:22px;font-weight:700;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.menu{
-  display:flex;
-  align-items:center;
-}
-
-/* DROPDOWN */
+.menu{display:flex;align-items:center;}
 .dropdown{position:relative;}
 .dropdown-content{
-  position:absolute;
-  top:42px;
-  left:0;
-  background:var(--card);
-  min-width:220px;
-  border-radius:10px;
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:.25s;
-}
-.dropdown-content a{
-  display:block;
-  padding:14px 18px;
-  border-bottom:1px solid var(--border);
-}
-.dropdown-content a:last-child{border-bottom:none;}
-.dropdown-content a:hover{
-  background:var(--border);
-  padding-left:24px;
+  position:absolute;top:42px;left:0;
+  background:var(--card);min-width:220px;
+  border-radius:10px;opacity:0;visibility:hidden;
+  transform:translateY(10px);transition:.25s;
 }
 .dropdown:hover .dropdown-content{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.dropdown-content a{
+  display:block;padding:14px 18px;border-bottom:1px solid var(--border);
 }
 
-/* DISCORD BUTTON */
 .discord-box{
-  padding:8px 16px;
-  border-radius:10px;
-  border:2px solid var(--accent);
-  color:var(--accent);
-  font-weight:600;
-  text-decoration:none;
-  transition:.25s;
+  padding:8px 16px;border-radius:10px;
+  border:2px solid var(--accent);color:var(--accent);
+  font-weight:600;text-decoration:none;
 }
-.discord-box:hover{
-  background:var(--accent);
-  color:#000;
-}
+.discord-box:hover{background:var(--accent);color:#000;}
 
 /* HERO */
 .hero{
-  text-align:center;
-  padding:100px 8% 90px;
+  text-align:center;padding:100px 8% 90px;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
-.hero h1{
-  font-size:46px;
-}
+.hero h1{font-size:46px;}
 .hero span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.hero p{
-  color:#aaa;
-  max-width:680px;
-  margin:20px auto;
-}
+.hero p{color:#aaa;max-width:680px;margin:20px auto;}
 
-/* AMD BOX */
 .amd-box{
-  display:inline-block;
-  margin-bottom:30px;
-  padding:14px 28px;
-  border-radius:14px;
+  display:inline-block;margin-bottom:30px;
+  padding:14px 28px;border-radius:14px;
   border:2px solid var(--accent);
-  color:var(--accent);
-  font-weight:600;
-  animation:jump 1.8s infinite;
-  box-shadow:0 0 18px rgba(92,200,255,.35);
-}
-@keyframes jump{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-22px)}
+  color:var(--accent);font-weight:600;
 }
 
-/* SERVICES SECTION */
-.services-section{
-  padding:90px 8%;
-}
-
-.services-title{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:60px;
-}
-.services-title span{
-  background:var(--accent-gradient);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
+/* SERVICES */
+.services-section{padding:70px 8%;}
 .services-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:40px;
+  gap:30px;
 }
 
 .service-card{
-  background:var(--card);
+  display:flex;
+  background:linear-gradient(to right, rgba(18,26,48,.95), rgba(18,26,48,.6));
   border:1px solid var(--border);
-  border-radius:18px;
+  border-radius:16px;
   overflow:hidden;
-  transition:.35s;
-}
-.service-card:hover{
-  transform:translateY(-10px);
-  border-color:var(--accent);
-  box-shadow:0 25px 50px rgba(92,200,255,.18);
 }
 
-/* SMALLER IMAGE */
 .service-card img{
-  width:100%;
-  height:150px;
+  width:42%;
   object-fit:cover;
-  display:block;
+  mask-image:linear-gradient(to right,#000 70%,transparent);
 }
 
-/* FADED TRANSITION */
 .service-content{
   padding:22px;
   text-align:left;
-  background:linear-gradient(
-    180deg,
-    rgba(18,26,48,0) 0%,
-    var(--card) 35%
-  );
+  flex:1;
 }
 
 .service-content h3{
@@ -217,79 +114,79 @@ nav a:hover{color:var(--accent)}
   -webkit-text-fill-color:transparent;
 }
 
-.service-features{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
-}
-
 .service-feature{
+  display:inline-block;
   background:#1a223d;
   border-radius:999px;
-  padding:8px 16px;
+  padding:6px 14px;
   font-size:13px;
-  color:#fff;
+  margin:4px 6px 10px 0;
 }
 
 .service-btn{
-  display:block;
-  width:85%;
-  margin:0 auto 22px;
-  padding:14px 0;
-  text-align:center;
-  font-weight:700;
-  text-decoration:none;
-  border-radius:12px;
+  display:inline-block;
+  margin-top:14px;
+  padding:12px 22px;
+  border-radius:10px;
   background:var(--accent-gradient);
   color:#fff;
+  text-decoration:none;
+  font-weight:700;
 }
 
-/* CMD PROMPT ROW */
+/* CMD ROW */
 .cmd-row{
-  margin-top:90px;
+  margin-top:80px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  align-items:center;
   gap:40px;
+  align-items:center;
 }
+.cmd-text{color:#9aa0b5;font-size:18px;text-align:center;}
 
-.cmd-text{
-  color:#9aa0b5;
-  font-size:18px;
+/* WHY CHOOSE */
+section h2{
   text-align:center;
+  font-size:34px;
+  margin:80px 0 40px;
 }
-
-/* FEATURES */
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:30px;
+  padding:0 8%;
 }
 .feature{
   background:var(--card);
   border:1px solid var(--border);
-  padding:30px;
-  border-radius:16px;
-  transition:.35s;
+  padding:28px;border-radius:16px;
+  transition:.3s;
 }
 .feature:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 40px rgba(92,200,255,.18);
+  transform:translateY(-8px);
   border-color:var(--accent);
 }
-.feature h3{color:var(--accent);}
 
-/* SUPPORT CTA FIX */
+/* SUPPORT FIXED */
 .support-cta{
   text-align:center;
-  padding:90px 8%;
+  padding:80px 8%;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
 }
-.support-cta .service-btn{
-  width:auto;
-  padding:16px 36px;
-  margin-top:30px;
+.support-cta h2 span{
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.support-cta a{
+  display:inline-block;
+  margin-top:24px;
+  padding:14px 30px;
+  border-radius:12px;
+  background:var(--accent-gradient);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
 }
 
 /* FOOTER */
@@ -300,18 +197,98 @@ footer{
   color:#777;
 }
 
+/* RESPONSIVE */
 @media(max-width:900px){
-  .services-grid{grid-template-columns:1fr;}
-  .cmd-row{grid-template-columns:1fr;}
-  .features{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:600px){
-  .features{grid-template-columns:1fr;}
-  .hero h1{font-size:36px;}
+  .services-grid,.cmd-row,.features{grid-template-columns:1fr;}
+  .service-card{flex-direction:column;}
+  .service-card img{width:100%;mask-image:none;}
 }
 </style>
 </head>
 
 <body>
+
+<nav>
+  <div class="logo">
+    <img src="/logo.png">
+    <span>FrostNodes</span>
+  </div>
+
+  <div class="menu">
+    <a href="/">Home</a>
+    <div class="dropdown">
+      <a href="#">Services ▾</a>
+      <div class="dropdown-content">
+        <a href="/minecraft">Minecraft</a>
+        <a href="/vps">VPS</a>
+        <a href="/bot">Bot</a>
+        <a href="/domain">Domain</a>
+        <a href="/prompt">CMD Prompt</a>
+      </div>
+    </div>
+    <a href="/about">About</a>
+    <a href="/ai">Frost AI</a>
+    <a href="/support">Support</a>
+  </div>
+
+  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
+</nav>
+
+<div class="hero">
+  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
+  <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
+  <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
+</div>
+
+<section class="services-section">
+  <div class="services-grid">
+
+    <div class="service-card">
+      <img src="/mc-thumb.png">
+      <div class="service-content">
+        <h3>Minecraft Hosting</h3>
+        <span class="service-feature">Low Latency</span>
+        <span class="service-feature">DDoS</span>
+        <span class="service-feature">Instant</span>
+        <br>
+        <a class="service-btn" href="/minecraft">View Plans →</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="/vps-thumb.png">
+      <div class="service-content">
+        <h3>VPS Hosting</h3>
+        <span class="service-feature">NVMe</span>
+        <span class="service-feature">Root</span>
+        <span class="service-feature">Powerful</span>
+        <br>
+        <a class="service-btn" href="/vps">View Plans →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Why Choose <span>FrostNodes</span>?</h2>
+  <div class="features">
+    <div class="feature">DDoS Protection</div>
+    <div class="feature">NVMe SSD</div>
+    <div class="feature">Instant Setup</div>
+    <div class="feature">India Location</div>
+    <div class="feature">24/7 Support</div>
+    <div class="feature">99.9% Uptime</div>
+  </div>
+</section>
+
+<section class="support-cta">
+  <h2>Need <span>Support?</span></h2>
+  <p>Open a ticket and get fast assistance.</p>
+  <a href="/support">Get Support Via Tickets</a>
+</section>
+
+<footer>© 2026 FrostNodes. All rights reserved.</footer>
+
 </body>
 </html>
