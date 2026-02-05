@@ -155,7 +155,7 @@ nav a:hover{color:var(--accent)}
   50%{transform:translateY(-22px)}
 }
 
-/* SERVICES SECTION (NEW – ONLY ADDITION) */
+/* SERVICES SECTION */
 .services-section{
   padding:90px 8%;
 }
@@ -165,7 +165,6 @@ nav a:hover{color:var(--accent)}
   font-size:34px;
   margin-bottom:60px;
 }
-
 .services-title span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
@@ -185,27 +184,27 @@ nav a:hover{color:var(--accent)}
   overflow:hidden;
   transition:.35s;
 }
-
 .service-card:hover{
   transform:translateY(-10px);
   border-color:var(--accent);
   box-shadow:0 25px 50px rgba(92,200,255,.18);
 }
 
+/* FIXED IMAGE SIZE */
 .service-card img{
   width:100%;
-  height:200px;
+  height:160px;
   object-fit:cover;
 }
 
 .service-content{
-  padding:26px;
+  padding:22px;
   text-align:center;
 }
 
 .service-content h3{
   font-size:22px;
-  margin-bottom:18px;
+  margin-bottom:16px;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -214,9 +213,9 @@ nav a:hover{color:var(--accent)}
 .service-features{
   display:flex;
   justify-content:center;
-  gap:14px;
+  gap:12px;
   flex-wrap:wrap;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
 .service-feature{
@@ -227,11 +226,15 @@ nav a:hover{color:var(--accent)}
   color:#fff;
 }
 
+/* FIXED BUTTON */
 .service-btn{
   display:block;
-  width:100%;
-  padding:16px 0;
+  width:85%;
+  margin:0 auto 22px;
+  padding:14px 0;
+  text-align:center;
   font-weight:700;
+  border-radius:12px;
   text-decoration:none;
   background:var(--accent-gradient);
   color:#fff;
@@ -272,10 +275,21 @@ nav a:hover{color:var(--accent)}
 }
 .feature h3{color:var(--accent);}
 
-/* SUPPORT CTA */
+/* SUPPORT CTA (FIXED) */
 .support-cta{
   text-align:center;
+  padding:90px 8%;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
+}
+.support-cta a{
+  display:inline-block;
+  margin-top:20px;
+  padding:16px 36px;
+  border-radius:14px;
+  background:var(--accent-gradient);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
 }
 
 /* FOOTER */
@@ -299,134 +313,5 @@ footer{
 </head>
 
 <body>
-
-<nav>
-  <div class="logo">
-    <img src="/logo.png">
-    <span>FrostNodes</span>
-  </div>
-
-  <div class="menu">
-    <a href="/">Home</a>
-    <div class="dropdown">
-      <a href="#">Services ▾</a>
-      <div class="dropdown-content">
-        <a href="/minecraft">Minecraft Server</a>
-        <a href="/vps">VPS Hosting</a>
-        <a href="/bot">Bot Hosting</a>
-        <a href="/domain">Domain Plan</a>
-        <a href="/prompt">CMD Prompt</a>
-      </div>
-    </div>
-    <a href="/about">About Us</a>
-    <a href="/ai">Frost AI</a>
-    <a href="/support">Support</a>
-  </div>
-
-  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9" target="_blank">Join Discord</a>
-</nav>
-
-<div class="hero">
-  <div class="amd-box">🚀 Powered by AMD Ryzen™ 9 7950X</div>
-  <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
-  <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
-</div>
-
-<!-- SERVICES INSERTED HERE -->
-<section class="services-section">
-  <h2 class="services-title">Our <span>Services</span></h2>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <img src="/mc-thumb.png">
-      <div class="service-content">
-        <h3>Minecraft Server</h3>
-        <div class="service-features">
-          <div class="service-feature">Low Latency</div>
-          <div class="service-feature">DDoS Protection</div>
-          <div class="service-feature">Instant Setup</div>
-        </div>
-      </div>
-      <a href="/minecraft" class="service-btn">View Plans →</a>
-    </div>
-
-    <div class="service-card">
-      <img src="/vps-thumb.png">
-      <div class="service-content">
-        <h3>VPS Hosting</h3>
-        <div class="service-features">
-          <div class="service-feature">NVMe SSD</div>
-          <div class="service-feature">Root Access</div>
-          <div class="service-feature">High Performance</div>
-        </div>
-      </div>
-      <a href="/vps" class="service-btn">View Plans →</a>
-    </div>
-
-    <div class="service-card">
-      <img src="/bot-thumb.png">
-      <div class="service-content">
-        <h3>Bot Hosting</h3>
-        <div class="service-features">
-          <div class="service-feature">24/7 Online</div>
-          <div class="service-feature">Stable</div>
-          <div class="service-feature">Easy Deploy</div>
-        </div>
-      </div>
-      <a href="/bot" class="service-btn">View Plans →</a>
-    </div>
-
-    <div class="service-card">
-      <img src="/domain-thumb.png">
-      <div class="service-content">
-        <h3>Domain Plan</h3>
-        <div class="service-features">
-          <div class="service-feature">Custom DNS</div>
-          <div class="service-feature">Secure</div>
-          <div class="service-feature">Easy Manage</div>
-        </div>
-      </div>
-      <a href="/domain" class="service-btn">View Plans →</a>
-    </div>
-  </div>
-
-  <div class="cmd-row">
-    <div class="cmd-text">
-      Checkout our Hosting Setup, Management Commands and Guides completely for free!
-    </div>
-
-    <div class="service-card">
-      <img src="/prompt-thumb.png">
-      <div class="service-content">
-        <h3>CMD Prompt</h3>
-        <div class="service-features">
-          <div class="service-feature">Free Codes & Commands</div>
-        </div>
-      </div>
-      <a href="/prompt" class="service-btn">Checkout Now →</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Why Choose <span>FrostNodes</span>?</h2>
-  <div class="features">
-    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade protection</p></div>
-    <div class="feature"><h3>NVMe SSD</h3><p>Ultra-fast storage</p></div>
-    <div class="feature"><h3>Instant Setup</h3><p>Ready in minutes</p></div>
-    <div class="feature"><h3>India Location</h3><p>Low latency</p></div>
-    <div class="feature"><h3>24/7 Support</h3><p>Always available</p></div>
-    <div class="feature"><h3>99.9% Uptime</h3><p>Maximum reliability</p></div>
-  </div>
-</section>
-
-<section class="support-cta">
-  <h2>Need <span>Support?</span></h2>
-  <p>Open a ticket and get fast assistance from our professional team.</p>
-  <a href="/support" class="service-btn">Get Support Via Tickets</a>
-</section>
-
-<footer>© 2026 FrostNodes. All rights reserved.</footer>
-
 </body>
 </html>
