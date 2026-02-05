@@ -80,10 +80,9 @@ header{text-align:center;padding:60px 20px 30px;}
 .chat-message.bot{justify-content:flex-start;}
 
 .message{
-  padding:12px 14px;
+  padding:10px 14px;
   border-radius:12px;
-  max-width:78%;
-  line-height:1.45;
+  max-width:75%;
 }
 
 .user .message{
@@ -98,19 +97,14 @@ header{text-align:center;padding:60px 20px 30px;}
   border-radius:12px 12px 12px 0;
 }
 
-/* THINKING SPINNER */
-.thinking{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.spinner{
-  width:18px;
-  height:18px;
+/* LOADING */
+.loading-symbol{
+  width:16px;
+  height:16px;
   border:3px solid #5cc8ff;
   border-top:3px solid #00ffff;
   border-radius:50%;
-  animation:spin 0.8s linear infinite;
+  animation:spin 1s linear infinite;
 }
 @keyframes spin{
   to{transform:rotate(360deg);}
@@ -127,7 +121,7 @@ input{
   color:#fff;
 }
 button{
-  padding:12px 22px;
+  padding:12px 20px;
   font-size:20px;
   border:none;
   border-radius:8px;
@@ -163,14 +157,14 @@ footer{color:#777;padding:20px;}
     <div class="ai">AI</div>
   </div>
   <div class="tagline">
-    Your friendly hosting assistant — VPS, Minecraft, Bot & Domain help.
+    Your friendly hosting assistant — VPS, Minecraft, Bot & Domain help. Powered by ChatGPT.
   </div>
 </header>
 
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input id="userInput" placeholder="Ask anything about FrostNodes…"
+    <input id="userInput" placeholder="Type anything… I’ll understand 😊"
       onkeydown="if(event.key==='Enter') sendMessage()">
     <button onclick="sendMessage()">➣</button>
   </div>
@@ -181,38 +175,103 @@ footer{color:#777;padding:20px;}
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-function normalize(text){
-  return text.toLowerCase().replace(/[^\w\s]/g,"").trim();
+function normalizeInput(text){
+  let msg = text.toLowerCase();
+
+  const replacements = {
+    "hlo":"hello","helo":"hello","hii":"hi","yoo":"yo","yo":"hello",
+    "sup":"hello","wassup":"hello","wyd":"what are you doing",
+    "hw r u":"how are you","how r u":"how are you","how ru":"how are you",
+    "pls":"please","plz":"please","thx":"thanks","ty":"thanks",
+    "u":"you","ur":"your",
+    "minecrft":"minecraft","mc":"minecraft",
+    "domian":"domain","doman":"domain",
+    "vpss":"vps","botts":"bot"
+  };
+
+  Object.entries(replacements).forEach(([k,v])=>{
+    msg = msg.replace(new RegExp("\\b"+k+"\\b","g"), v);
+  });
+
+  return msg.replace(/[^\w\s]/g,"").trim();
 }
 
 function getBotReply(input){
-  const msg = normalize(input);
+  const msg = normalizeInput(input);
 
-  if(/hello|hi|hey/.test(msg))
-    return `Hey! 👋 I'm Frost AI.\n\nYou can ask me things like:\n• Best VPS use cases\n• Minecraft server setup\n• Discord bot hosting\n• Domain info`;
+  if(/hello|hi|how are you/.test(msg))
+    return "Hey! 😄 I’m Frost AI from FrostNodes. I’m doing great! How can I help you today?";
 
-  if(msg.includes("owner") || msg.includes("owners"))
-    return `FrostNodes owners are:\n• Dynamind\n• SunEarrings\n• Monkey D. Luffy`;
+  if(msg.includes("thanks"))
+    return "Anytime! 💙 If you need hosting help, I’ve got you.";
 
   if(msg.includes("founder"))
     return "FrostNodes was founded by DevNikhil.";
 
-  if(msg.includes("vps"))
-    return `A VPS (Virtual Private Server) is perfect if you want control.\n\nExamples:\n• Minecraft servers\n• Websites (Apache/Nginx)\n• Discord bots\n• VPN or panels\n\nYou get root access & dedicated resources.`;
+  if(msg.includes("owner"))
+    return "FrostNodes is owned by Dynamind, SunEarrings and Monky D Luffy.";
 
-  if(msg.includes("minecraft"))
-    return `Minecraft Hosting lets you run servers 24/7.\n\nExamples:\n• Lifesteal SMP\n• Modded servers\n• Plugins like EssentialsX\n\nYou can manage it via panel & console.`;
+  if(msg.includes("ceo"))
+    return "The CEO of FrostNodes is Nishit.exe.";
 
-  if(msg.includes("bot"))
-    return `Bot Hosting keeps your bots online.\n\nExamples:\n• Discord.js bots\n• Python bots\n• Music & moderation bots\n\nNo need to keep your PC on.`;
+  if(msg.includes("about frostnodes") || msg.includes("what is frostnodes"))
+    return "FrostNodes is an India-based hosting company offering budget-friendly and exclusive plans for Minecraft, VPS, Bot Hosting, and Domains.";
 
-  if(msg.includes("domain"))
-    return `A domain is your website address.\n\nExample:\n• frostnodes.in\n• play.frostnodes.in\n\nIt makes your brand professional.`;
+  if(msg.includes("vps")){
+    return `A VPS (Virtual Private Server) gives you full control with dedicated resources.
+
+Examples you can use a VPS for:
+• Hosting websites  
+• Minecraft servers  
+• Discord bots  
+• Game panels  
+• VPNs  
+
+Steps to use a VPS:
+1️⃣ Buy a VPS  
+2️⃣ Choose OS (Linux/Windows)  
+3️⃣ Connect via SSH/RDP  
+4️⃣ Deploy your services`;
+  }
+
+  if(msg.includes("minecraft")){
+    return `Minecraft hosting lets you run multiplayer servers 24/7.
+
+What FrostNodes offers:
+• Low latency (India optimized 🇮🇳)  
+• Plugin & mod support  
+• DDoS protection  
+• Easy control panel  
+
+Perfect for SMPs, Lifesteal & Networks.`;
+  }
+
+  if(msg.includes("bot")){
+    return `Bot hosting keeps your Discord or Telegram bots online 24/7.
+
+Example bots:
+• Moderation bots  
+• Music bots  
+• Ticket bots  
+
+Just upload your bot files and start—no PC needed.`;
+  }
+
+  if(msg.includes("domain")){
+    return `A domain is your website address (like frostnodes.in).
+
+Popular domain providers:
+• Namecheap  
+• Cloudflare  
+• Google Domains  
+
+Domains make your hosting look professional & trusted.`;
+  }
 
   if(msg.includes("support") || msg.includes("help"))
-    return `Need help? 😄\n\nYou can:\n• Open a Discord ticket\n• Ask here for guidance\n• Get setup examples`;
+    return "Need help? 💬 You can contact FrostNodes support via Discord tickets for fast assistance.";
 
-  return `I'm specialized in FrostNodes services.\n\nTry asking:\n• "What can I use a VPS for?"\n• "Minecraft server setup"\n• "Bot hosting examples"`;
+  return "🤖 I specialize only in FrostNodes hosting (VPS, Minecraft, Bots & Domains). Try asking about those!";
 }
 
 function sendMessage(){
@@ -225,18 +284,15 @@ function sendMessage(){
   input.value="";
   chat.scrollTop = chat.scrollHeight;
 
-  const bot = document.createElement("div");
-  bot.className = "chat-message bot";
-  bot.innerHTML = `<div class="message thinking">
-      <div class="spinner"></div> Thinking…
-    </div>`;
-  chat.appendChild(bot);
-  chat.scrollTop = chat.scrollHeight;
+  const botDiv = document.createElement("div");
+  botDiv.className = "chat-message bot";
+  botDiv.innerHTML = `<div class="message"><span class="loading-symbol"></span> Thinking…</div>`;
+  chat.appendChild(botDiv);
 
   setTimeout(()=>{
-    bot.innerHTML = `<div class="message">${getBotReply(text).replace(/\n/g,"<br>")}</div>`;
+    botDiv.innerHTML = `<div class="message">${getBotReply(text)}</div>`;
     chat.scrollTop = chat.scrollHeight;
-  }, 900);
+  },800);
 }
 </script>
 
