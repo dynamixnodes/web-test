@@ -175,119 +175,72 @@ footer{color:#777;padding:20px;}
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-/* ===============================
-   NORMALIZATION (CASUAL + TYPOS)
-================================ */
+/* NORMALIZATION */
 function normalizeInput(text){
   let msg = text.toLowerCase();
-
   const replacements = {
-    "hlo":"hello","helo":"hello","hii":"hi","yoo":"yo","yo":"hello",
-    "sup":"hello","wassup":"hello","wyd":"what are you doing",
-    "hw r u":"how are you","how r u":"how are you","how ru":"how are you",
+    "hlo":"hello","helo":"hello","hii":"hi","yoo":"hello","yo":"hello",
+    "sup":"hello","wyd":"what are you doing",
     "pls":"please","plz":"please","thx":"thanks","ty":"thanks",
     "u":"you","ur":"your",
-    "minecrft":"minecraft","mc":"minecraft",
+    "mc":"minecraft","minecrft":"minecraft",
     "domian":"domain","doman":"domain",
     "vpss":"vps","botts":"bot"
   };
-
   Object.entries(replacements).forEach(([k,v])=>{
     msg = msg.replace(new RegExp("\\b"+k+"\\b","g"), v);
   });
-
   return msg.replace(/[^\w\s]/g,"").trim();
 }
 
-/* ===============================
-   AI KNOWLEDGE BASE
-================================ */
+/* AI RESPONSES */
 function getBotReply(input){
   const msg = normalizeInput(input);
 
-  /* Greetings */
   if(/hello|hi|how are you/.test(msg))
-    return "Hey! 😄 I’m Frost AI from **FrostNodes**. I’m doing great! How can I help you today?";
+    return "Hey! 😄 I’m Frost AI from FrostNodes. I’m doing great! How can I help you today?";
 
   if(msg.includes("thanks"))
-    return "Anytime! 💙 If you need hosting help, I’ve got you.";
+    return "You’re welcome! 💙 Always happy to help.";
 
-  /* About FrostNodes */
   if(msg.includes("founder"))
-    return "FrostNodes was founded by **DevNikhil** 🚀.";
+    return "FrostNodes was founded by DevNikhil.";
 
   if(msg.includes("owner"))
-    return "FrostNodes is owned by **Dynamind, Luffy, and Sunearrings**.";
+    return "FrostNodes is owned by Dynamind, Luffy, and Sunearrings.";
 
-  if(msg.includes("about frostnodes") || msg.includes("what is frostnodes"))
-    return "FrostNodes is an **India-based hosting company** offering **budget-friendly and exclusive plans** for Minecraft, VPS, Bot Hosting, and Domains.";
+  if(msg.includes("what is frostnodes") || msg.includes("about frostnodes"))
+    return "FrostNodes is an India-based hosting company offering budget-friendly plans for Minecraft, VPS, Bot Hosting, and Domains.";
 
-  /* VPS */
-  if(msg.includes("vps")){
-    return `A **VPS (Virtual Private Server)** gives you full control with dedicated resources.
+  if(msg.includes("vps"))
+    return "A VPS gives you full control with dedicated resources.<br><br>"
+    + "Examples:<br>"
+    + "• Websites<br>• Minecraft servers<br>• Discord bots<br>• VPNs<br><br>"
+    + "Steps:<br>"
+    + "1) Buy VPS<br>2) Choose OS<br>3) Connect via SSH/RDP<br>4) Deploy services";
 
-**Examples you can use a VPS for:**
-• Hosting websites  
-• Minecraft servers  
-• Discord bots  
-• Game panels  
-• VPNs  
+  if(msg.includes("minecraft"))
+    return "Minecraft hosting lets you run servers 24/7.<br><br>"
+    + "Features:<br>"
+    + "• Low latency (India)<br>• Mods & plugins<br>• DDoS protection<br>• Control panel";
 
-**Steps to use a VPS:**
-1️⃣ Buy a VPS  
-2️⃣ Choose OS (Linux/Windows)  
-3️⃣ Connect via SSH/RDP  
-4️⃣ Deploy your services`;
-  }
+  if(msg.includes("bot"))
+    return "Bot hosting keeps your Discord or Telegram bots online 24/7.<br><br>"
+    + "Examples:<br>"
+    + "• Moderation bots<br>• Music bots<br>• Ticket bots";
 
-  /* Minecraft */
-  if(msg.includes("minecraft")){
-    return `Minecraft hosting lets you run multiplayer servers 24/7.
+  if(msg.includes("domain"))
+    return "A domain is your website address.<br><br>"
+    + "Popular providers:<br>"
+    + "• Namecheap<br>• Cloudflare<br>• Google Domains";
 
-**What FrostNodes offers:**
-• Low latency (India optimized 🇮🇳)  
-• Plugin & mod support  
-• DDoS protection  
-• Easy control panel  
-
-Perfect for SMPs, Lifesteal & Networks.`;
-  }
-
-  /* Bot Hosting */
-  if(msg.includes("bot")){
-    return `Bot hosting keeps your Discord/Telegram bots online 24/7.
-
-**Example bots:**
-• Moderation bots  
-• Music bots  
-• Ticket bots  
-
-Just upload your bot files and start—no PC needed.`;
-  }
-
-  /* Domains */
-  if(msg.includes("domain")){
-    return `A **domain** is your website address (like frostnodes.in).
-
-**Popular domain providers:**
-• Namecheap  
-• Cloudflare  
-• Google Domains  
-
-Domains make your hosting look professional & trusted.`;
-  }
-
-  /* Support */
   if(msg.includes("support") || msg.includes("help"))
-    return "Need help? 💬 You can contact FrostNodes support via **Discord tickets** for fast assistance.";
+    return "You can get help via FrostNodes Discord ticket support.";
 
-  /* Restriction */
-  return "🤖 I specialize only in **FrostNodes hosting** (VPS, Minecraft, Bots & Domains). Try asking about those!";
+  return "🤖 I specialize in FrostNodes hosting only. Ask me about VPS, Minecraft, Bots, or Domains.";
 }
 
-/* ===============================
-   SEND MESSAGE
-================================ */
+/* SEND MESSAGE */
 function sendMessage(){
   const input = document.getElementById("userInput");
   const chat = document.getElementById("chatBox");
