@@ -79,7 +79,18 @@ nav a:hover{color:var(--accent);}
 }
 
 /* SERVICES */
-.services-section{padding:70px 8%;}
+.services-section{padding:80px 8%;}
+.services-section h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:50px;
+}
+.services-section h2 span{
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
 .services-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -92,6 +103,12 @@ nav a:hover{color:var(--accent);}
   border:1px solid var(--border);
   border-radius:16px;
   overflow:hidden;
+  transition:.35s;
+}
+.service-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--accent);
+  box-shadow:0 25px 45px rgba(92,200,255,.2);
 }
 
 .service-card img{
@@ -102,8 +119,8 @@ nav a:hover{color:var(--accent);}
 
 .service-content{
   padding:22px;
-  text-align:left;
   flex:1;
+  text-align:left;
 }
 
 .service-content h3{
@@ -134,22 +151,18 @@ nav a:hover{color:var(--accent);}
   font-weight:700;
 }
 
-/* CMD ROW */
-.cmd-row{
-  margin-top:80px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-.cmd-text{color:#9aa0b5;font-size:18px;text-align:center;}
-
 /* WHY CHOOSE */
-section h2{
+.why-section h2{
   text-align:center;
   font-size:34px;
-  margin:80px 0 40px;
+  margin:90px 0 45px;
 }
+.why-section h2 span{
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -159,15 +172,33 @@ section h2{
 .feature{
   background:var(--card);
   border:1px solid var(--border);
-  padding:28px;border-radius:16px;
-  transition:.3s;
+  padding:28px;
+  border-radius:16px;
+  transition:.35s;
 }
 .feature:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
   border-color:var(--accent);
+  box-shadow:0 20px 40px rgba(92,200,255,.18);
+}
+.feature h3{color:var(--accent);margin-bottom:8px;}
+.feature p{color:#aaa;font-size:14px;}
+
+/* CMD ROW */
+.cmd-row{
+  margin:90px 8%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+.cmd-text{
+  color:#9aa0b5;
+  font-size:18px;
+  text-align:center;
 }
 
-/* SUPPORT FIXED */
+/* SUPPORT */
 .support-cta{
   text-align:center;
   padding:80px 8%;
@@ -199,7 +230,7 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .services-grid,.cmd-row,.features{grid-template-columns:1fr;}
+  .services-grid,.features,.cmd-row{grid-template-columns:1fr;}
   .service-card{flex-direction:column;}
   .service-card img{width:100%;mask-image:none;}
 }
@@ -241,44 +272,85 @@ footer{
 </div>
 
 <section class="services-section">
-  <div class="services-grid">
+  <h2>Our <span>Services</span></h2>
 
+  <div class="services-grid">
+    <!-- Minecraft -->
     <div class="service-card">
       <img src="/mc-thumb.png">
       <div class="service-content">
         <h3>Minecraft Hosting</h3>
         <span class="service-feature">Low Latency</span>
-        <span class="service-feature">DDoS</span>
-        <span class="service-feature">Instant</span>
-        <br>
+        <span class="service-feature">DDoS Protection</span>
+        <span class="service-feature">Instant Setup</span><br>
         <a class="service-btn" href="/minecraft">View Plans →</a>
       </div>
     </div>
 
+    <!-- VPS -->
     <div class="service-card">
       <img src="/vps-thumb.png">
       <div class="service-content">
         <h3>VPS Hosting</h3>
-        <span class="service-feature">NVMe</span>
-        <span class="service-feature">Root</span>
-        <span class="service-feature">Powerful</span>
-        <br>
+        <span class="service-feature">NVMe SSD</span>
+        <span class="service-feature">Root Access</span>
+        <span class="service-feature">High Performance</span><br>
         <a class="service-btn" href="/vps">View Plans →</a>
       </div>
     </div>
 
+    <!-- Bot -->
+    <div class="service-card">
+      <img src="/bot-thumb.png">
+      <div class="service-content">
+        <h3>Bot Hosting</h3>
+        <span class="service-feature">24/7 Online</span>
+        <span class="service-feature">Stable</span>
+        <span class="service-feature">Easy Deploy</span><br>
+        <a class="service-btn" href="/bot">View Plans →</a>
+      </div>
+    </div>
+
+    <!-- Domain -->
+    <div class="service-card">
+      <img src="/domain-thumb.png">
+      <div class="service-content">
+        <h3>Domain Plans</h3>
+        <span class="service-feature">Custom DNS</span>
+        <span class="service-feature">Secure</span>
+        <span class="service-feature">Easy Manage</span><br>
+        <a class="service-btn" href="/domain">View Plans →</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="why-section">
   <h2>Why Choose <span>FrostNodes</span>?</h2>
+
   <div class="features">
-    <div class="feature">DDoS Protection</div>
-    <div class="feature">NVMe SSD</div>
-    <div class="feature">Instant Setup</div>
-    <div class="feature">India Location</div>
-    <div class="feature">24/7 Support</div>
-    <div class="feature">99.9% Uptime</div>
+    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade protection for your servers</p></div>
+    <div class="feature"><h3>NVMe SSD Storage</h3><p>Lightning-fast performance with NVMe drives</p></div>
+    <div class="feature"><h3>Instant Setup</h3><p>Get your server running in minutes</p></div>
+    <div class="feature"><h3>India Location</h3><p>Low latency for Indian players</p></div>
+    <div class="feature"><h3>24/7 Support</h3><p>Always here to help you succeed</p></div>
+    <div class="feature"><h3>99.9% Uptime</h3><p>Reliable infrastructure you can trust</p></div>
+  </div>
+</section>
+
+<section class="cmd-row">
+  <div class="cmd-text">
+    Checkout our Hosting Setup, Management Commands and Guides completely for free!
+  </div>
+
+  <div class="service-card">
+    <img src="/prompt-thumb.png">
+    <div class="service-content">
+      <h3>CMD Prompt</h3>
+      <span class="service-feature">Free Codes</span>
+      <span class="service-feature">Management Commands</span><br>
+      <a class="service-btn" href="/prompt">Checkout Now →</a>
+    </div>
   </div>
 </section>
 
