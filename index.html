@@ -90,6 +90,14 @@ nav a:hover{color:var(--accent);}
   box-shadow:0 0 22px rgba(92,200,255,.25);
 }
 
+.amd-icon{
+  width:1em;
+  height:1em;
+  fill:currentColor;
+  vertical-align:-0.15em;
+  margin-right:6px;
+}
+
 /* SERVICES */
 .services-section{padding:80px 8%;}
 .services-section h2{
@@ -278,7 +286,12 @@ footer{
 </nav>
 
 <div class="hero">
-  <div class="amd-box">🚀 Powered by AMD Epyc™ 7551P</div>
+  <div class="amd-box">
+    <svg class="amd-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2c-2.7 0-5 4.1-5 7.5V11l-3 3v2h6v4l2 2 2-2v-4h6v-2l-3-3V9.5C17 6.1 14.7 2 12 2z"/>
+    </svg>
+    Powered by AMD Epyc™ 7551P
+  </div>
   <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
 </div>
