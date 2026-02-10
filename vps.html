@@ -405,6 +405,10 @@ nav a:hover{color:var(--accent);}
         <img src="/x_lightning.svg">
         <span><b>Protection:</b></span> <b>DDos Standard</b>
       </div>
+      <div class="plan-spec">
+        <img src="/x_lightning.svg">
+        <span><b>Uptime:</b></span> <b>24/7</b>
+      </div>
 
       <a
         class="order-btn"
@@ -449,6 +453,15 @@ const processor = {
   },
   intel: {
     cpu: "Intel Xeon E-5"
+  }
+};
+
+const uptime = {
+  amd: {
+    up: "24/7"
+  },
+  intel: {
+    up: "95%"
   }
 };
 
@@ -501,6 +514,11 @@ plans.innerHTML = `
     <div class="plan-spec">
       <img src="/x_lightning.svg">
       <span><b>Protection:</b></span> <b>DDos Standard</b>
+    </div>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
     </div>
 
     <a
