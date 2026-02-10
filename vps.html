@@ -128,10 +128,10 @@ nav a:hover{color:var(--accent);}
 .plans-cpu-switch{
   margin:0 auto 20px;
 }
-.cpu-section{
+.cpu-only{
   display:flex;
   justify-content:center;
-  margin:30px 0 20px;
+  margin:35px 0 25px;
 }
 .cpu-btn{
   padding:12px 26px;
@@ -332,13 +332,14 @@ nav a:hover{color:var(--accent);}
 
 </section>
 
-<section class="plans-wrapper">
-  
-  <div class="cpu-switch plans-cpu-switch">
+<section class="cpu-only">
+  <div class="cpu-switch">
     <div class="cpu-btn active" onclick="showPlans('amd')">AMD Epyc</div>
     <div class="cpu-btn" onclick="showPlans('intel')">Intel Xeon</div>
   </div>
+</section>
   
+<section class="plans-wrapper">
   <div class="plans-title">
     <span class="white"><b>AMD Epyc</b></span>
     <span class="blue"><b>VPS Plans</b></span>
