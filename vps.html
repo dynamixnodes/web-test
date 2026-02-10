@@ -20,13 +20,13 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
 body{background:var(--bg);color:#fff;}
 
-/* NAV (UNCHANGED) */
 nav{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 8%;background:var(--nav);position:sticky;top:0;z-index:1000;
 }
 nav a{color:#cfcfcf;text-decoration:none;margin:0 14px;font-weight:500;}
 nav a:hover{color:var(--accent);}
+
 .logo{display:flex;align-items:center;gap:12px;}
 .logo img{width:34px;}
 .logo span{
@@ -35,6 +35,34 @@ nav a:hover{color:var(--accent);}
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+
+.menu{display:flex;align-items:center;}
+.dropdown{position:relative;}
+.dropdown-content{
+  position:absolute;top:42px;left:0;
+  background:var(--card);min-width:220px;
+  border-radius:10px;opacity:0;visibility:hidden;
+  transform:translateY(10px);transition:.25s;
+}
+.dropdown:hover .dropdown-content{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.dropdown-content a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  white-space:nowrap;
+}
+.drop-icon{
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+
+  filter: brightness(0) saturate(100%) invert(69%) sepia(87%)
+          saturate(406%) hue-rotate(165deg)
+          brightness(101%) contrast(101%);
+}
+
 .discord-box{
   padding:8px 16px;border-radius:10px;
   border:2px solid var(--accent);color:var(--accent);
@@ -231,11 +259,43 @@ nav a:hover{color:var(--accent);}
     <img src="/logo.png">
     <span>FrostNodes</span>
   </div>
-  <div>
+
+  <div class="menu">
     <a href="/">Home</a>
-    <a href="/vps">VPS</a>
+    <div class="dropdown">
+      <a href="/">Services ▾</a>
+      <div class="dropdown-content">
+        <a href="/minecraft">
+          <img src="/x_game.svg" class="drop-icon" alt="Minecraft">
+          Minecraft Server
+        </a>
+        <a href="/vps">
+          <img src="/x_server.svg" class="drop-icon" alt="VPS">
+          VPS Hosting
+        </a>
+        <a href="/bot">
+          <img src="/x_bot.svg" class="drop-icon" alt="Bot">
+          Bot Hosting
+        </a>
+        <a href="/domain">
+          <img src="/x_web.svg" class="drop-icon" alt="Domain">
+          Domain Plans
+        </a>
+        <a href="/cmd">
+          <img src="/x_code.svg" class="drop-icon" alt="CMD">
+          CMD Codes
+        </a>
+        <a href="/development">
+          <img src="/x_construct.svg" class="drop-icon" alt="DEV">
+          Development Plan
+        </a>
+      </div>
+    </div>
+    <a href="/about">About Us</a>
+    <a href="/ai">Frost AI</a>
     <a href="/support">Support</a>
   </div>
+
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
 </nav>
 
@@ -252,7 +312,7 @@ nav a:hover{color:var(--accent);}
 
   <p>
     High-performance virtual private servers with Intel Xeon & AMD Ryzen processors
-    and India Location.
+    and India Location for low latency.
   </p>
 
   <div class="cpu-switch">
@@ -269,12 +329,12 @@ nav a:hover{color:var(--accent);}
 
   <div id="plans" class="plans-grid">
     <div class="plan-card">
-      <div class="plan-name">Starter VPS</div>
-      <div class="plan-price">₹-- <span>/month</span></div>
+      <div class="plan-name"></b>Starter VPS</b></div>
+      <div class="plan-price"><b></b>₹-- <b></b><span><b>/month</b></span></div>
 
       <div class="plan-spec">
         <img src="/x_lightning.svg">
-        <span>RAM:</span> <b>2 GB</b>
+        <span><b></b>RAM:</b></span> <b>2 GB</b>
       </div>
     </div>
   </div>
@@ -283,9 +343,12 @@ nav a:hover{color:var(--accent);}
 <section class="features-section">
   <h2>FEATURES</h2>
   <div class="features">
-    <div class="feature"></div>
-    <div class="feature"></div>
-    <div class="feature"></div>
+    <div class="feature">Enterprise Processors</div>
+    <div class="feature">NVMe SSD Storage</div>
+    <div class="feature">DDoS Protected</div>
+    <div class="feature">24/7 Uptime</div>
+    <div class="feature">India Proxy</div>
+    <div class="feature">Full Root Access</div>
   </div>
 </section>
 
