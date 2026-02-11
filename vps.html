@@ -454,14 +454,14 @@ const ddos = {
 const prices = {
   amd: {
     standard: "₹250",
-    elite: "₹500"
-    premium: "₹1000"
+    elite: "₹500",
+    premium: "₹1000",
     ultimate: "₹1700"
   },
   intel: {
     standard: "₹150",
-    elite: "₹300"
-    premium: "₹600"
+    elite: "₹300",
+    premium: "₹600",
     ultimate: "₹1200"
   }
 };
@@ -489,15 +489,14 @@ function showPlans(type, el){
   buttons.forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 
-  const title=document.querySelector('.plans-title');
-  const plans=document.getElementById('plans');
+  const title = document.querySelector('.plans-title');
+  const plans = document.getElementById('plans');
 
   title.innerHTML =
-    type==='amd'
+    type === 'amd'
     ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b>VPS Plans</b></span>'
     : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b>VPS Plans</b></span>';
-}
-
+  
 plans.innerHTML = `
   <!-- STANDARD PLAN -->
   <div class="plan-card">
@@ -717,6 +716,12 @@ plans.innerHTML = `
 `;
 
 }
+
+window.onload = () => {
+  const amdBtn = document.querySelector(".cpu-btn");
+  showPlans("amd", amdBtn);
+};
+
 </script>
 
 </body>
