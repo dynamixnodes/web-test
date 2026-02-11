@@ -455,10 +455,14 @@ const prices = {
   amd: {
     standard: "₹250",
     elite: "₹500"
+    premium: "₹1000"
+    ultimate: "₹1700"
   },
   intel: {
     standard: "₹150",
     elite: "₹300"
+    premium: "₹600"
+    ultimate: "₹1200"
   }
 };
 
@@ -554,24 +558,24 @@ plans.innerHTML = `
       ${type==='amd'
         ? '<font size=5><b>AMD</b></font>'
         : '<font size=5><b>Intel</b></font>'}
-      <font size=5><b> Starter VPS</b></font>
+      <font size=5><b> Elite VPS</b></font>
     </div>
 
     <div class="plan-price">
-      <font size=5><b>${prices[type].starter} </b></font><span><b>/month</b></span>
+      <font size=5><b>${prices[type].elite} </b></font><span><b>/month</b></span>
     </div>
 
     <div class="plan-spec">
       <img src="/x_lightning.svg">
-      <span><b>RAM:</b></span> <b>8 GB DDR4</b>
+      <span><b>RAM:</b></span> <b>16 GB DDR4</b>
     </div>
     <div class="plan-spec">
       <img src="/x_lightning.svg">
-      <span><b>CPU:</b></span> <b>4 cores</b>
+      <span><b>CPU:</b></span> <b>8 vcores</b>
     </div>
     <div class="plan-spec">
       <img src="/x_lightning.svg">
-      <span><b>Disk:</b></span> <b>80 GB NVme SSD</b>
+      <span><b>Disk:</b></span> <b>130 GB NVme SSD</b>
     </div>
     <div class="plan-spec">
       <img src="/x_lightning.svg">
@@ -583,7 +587,117 @@ plans.innerHTML = `
     </div>
     <div class="plan-spec">
       <img src="/x_lightning.svg">
-      <span><b>Protection:</b></span> <b>DDos Standard</b>
+      <span><b>Protection:</b></span> <b>${ddos[type].ddo}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>OS:</b></span> <b>Ubuntu</b>
+    </div>
+    
+    <a
+      class="order-btn"
+      href="https://discord.com/channels/1293569663694930011/1469272403015368795"
+      target="_blank">
+      Order Now!
+    </a>
+  </div>
+`;
+
+  <!-- PREMIUM PLAN -->
+  <div class="plan-card">
+    <div class="plan-name">
+      ${type==='amd'
+        ? '<font size=5><b>AMD</b></font>'
+        : '<font size=5><b>Intel</b></font>'}
+      <font size=5><b> Premium VPS</b></font>
+    </div>
+
+    <div class="plan-price">
+      <font size=5><b>${prices[type].premium} </b></font><span><b>/month</b></span>
+    </div>
+
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>RAM:</b></span> <b>32 GB DDR4</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>CPU:</b></span> <b>16 vcores</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Disk:</b></span> <b>180 GB NVme SSD</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Location:</b></span> <b>India</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Processor:</b></span> <b>${processor[type].cpu}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Protection:</b></span> <b>${ddos[type].ddo}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>OS:</b></span> <b>Ubuntu</b>
+    </div>
+    
+    <a
+      class="order-btn"
+      href="https://discord.com/channels/1293569663694930011/1469272403015368795"
+      target="_blank">
+      Order Now!
+    </a>
+  </div>
+`;
+
+  <!-- ULTIMATE PLAN -->
+  <div class="plan-card">
+    <div class="plan-name">
+      ${type==='amd'
+        ? '<font size=5><b>AMD</b></font>'
+        : '<font size=5><b>Intel</b></font>'}
+      <font size=5><b> Ultimate VPS</b></font>
+    </div>
+
+    <div class="plan-price">
+      <font size=5><b>${prices[type].ultimate} </b></font><span><b>/month</b></span>
+    </div>
+
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>RAM:</b></span> <b>64 GB DDR4</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>CPU:</b></span> <b>32 vcores</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Disk:</b></span> <b>256 GB NVme SSD</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Location:</b></span> <b>India</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Processor:</b></span> <b>${processor[type].cpu}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Protection:</b></span> <b>${ddos[type].ddo}</b>
     </div>
     <div class="plan-spec">
       <img src="/x_lightning.svg">
