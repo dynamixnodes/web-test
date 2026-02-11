@@ -365,7 +365,7 @@ nav a:hover{color:var(--accent);}
 
 <section class="cpu-only">
   <div class="cpu-switch">
-    <div class="cpu-btn active" onclick="showPlans('amd', this)">AMD Epyc</div>
+    <div class="cpu-btn" onclick="showPlans('amd', this)">AMD Epyc</div>
     <div class="cpu-btn" onclick="showPlans('intel', this)">Intel Xeon</div>
   </div>
 </section>
@@ -501,6 +501,10 @@ function showPlans(type, el){
   showPlans("amd", amdBtn);
 });
 
+window.onload = () => {
+  const amdBtn = document.querySelectorAll(".cpu-btn")[0];
+  showPlans("amd", amdBtn);
+};
 
 plans.innerHTML = `
   <!-- STANDARD PLAN -->
