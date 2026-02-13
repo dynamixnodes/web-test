@@ -88,6 +88,13 @@ nav a:hover{color:var(--accent);}
 }
 .discord-box:hover{background:var(--accent);color:#000;}
 
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:var(--accent);
+}
+
 /* HERO */
 .hero{
   text-align:center;
@@ -295,6 +302,46 @@ nav a:hover{color:var(--accent);}
 @media(max-width:900px){
   .plans-grid,.features{grid-template-columns:1fr;}
 }
+
+@media(max-width:900px){
+  .menu{
+    position:absolute;
+    top:70px;
+    right:8%;
+    background:var(--card);
+    flex-direction:column;
+    width:220px;
+    border-radius:14px;
+    padding:14px;
+    gap:10px;
+    display:none;
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
+  }
+
+  .menu.show{
+    display:flex;
+  }
+
+  .hamburger{
+    display:block;
+  }
+}
+
+@media(max-width:900px){
+  .dropdown:hover .dropdown-content{
+    opacity:0;
+    visibility:hidden;
+  }
+
+  .dropdown-content{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    background:none;
+    padding-left:10px;
+  }
+}
 </style>
 </head>
 
@@ -343,6 +390,10 @@ nav a:hover{color:var(--accent);}
   </div>
 
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
 </nav>
 
 <section class="hero">
@@ -483,6 +534,13 @@ const uptime = {
     up: "99%"
   }
 };
+
+const hamburger = document.getElementById("hamburger");
+const menu = document.querySelector(".menu");
+
+hamburger.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
 
 function showPlans(type, el){
   const buttons = document.querySelectorAll('.cpu-btn');
